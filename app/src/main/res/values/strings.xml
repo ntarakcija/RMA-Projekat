@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">rma18Tarakčija16925</string>
     <string-array name="kategorije">
-        <item>roman</item>
-        <item>novela</item>
-        <item>triler</item>
-        <item>bajka</item>
-        <item>horor</item>
-        <item>ep</item>
-        <item>poezija</item>
+        <item>Roman</item>
+        <item>Novela</item>
+        <item>Triler</item>
+        <item>Bajka</item>
+        <item>Horor</item>
+        <item>Ep</item>
+        <item>Poezija</item>
     </string-array>
 </resources>

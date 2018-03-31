@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,6 +63,16 @@ public class KategorijeAkt extends AppCompatActivity {
                 (KategorijeAkt.this).adapterKategorije.getFilter().filter(s);
             }
         });
+
+        listListaKategorija.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent pregledKategorije = new Intent(KategorijeAkt.this, ListaKnjigaAkt.class);
+                //pregledKategorije.putParcelableArrayListExtra("knjige", (ArrayList) knjige);
+                pregledKategorije.putExtra("knjige", knjige);
+                startActivity(pregledKategorije);
+            }
+        });
     }
 
     @Override
@@ -76,12 +87,10 @@ public class KategorijeAkt extends AppCompatActivity {
             Knjiga novaKnjiga = new Knjiga(imeAutora, nazivKnjige, kategorija, ucitanaSlika);
             knjige.add(novaKnjiga);
 
-            Toast.makeText(getBaseContext(),"Knjiga unesena.", Toast.LENGTH_SHORT).show();
-        }
-        else if (requestCode == 1 && resultCode == RESULT_CANCELED){
-            Toast.makeText(getBaseContext(),"Unos knjige poništen.", Toast.LENGTH_SHORT).show();
-        }
-        else {
+            Toast.makeText(getBaseContext(), "Knjiga unesena.", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == 1 && resultCode == RESULT_CANCELED) {
+            Toast.makeText(getBaseContext(), "Unos knjige poništen.", Toast.LENGTH_SHORT).show();
+        } else {
 
         }
     }

@@ -66,13 +66,13 @@ public class DodavanjeKnjigeAkt extends AppCompatActivity implements AdapterView
         buttonUpisiKnjigu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(imeAutora.getText().toString().equals("") || nazivKnjige.getText().toString().equals("") || !Uri.EMPTY.equals(ucitanaSlika)) {
+                if(imeAutora.getText().toString().equals("") || nazivKnjige.getText().toString().equals("") || Uri.EMPTY.equals(ucitanaSlika)) {
                     Toast.makeText(getBaseContext(),"Niste unijeli sve potrebne podatke.", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Intent intentUcitajKnjigu = new Intent();
-                    intentUcitajKnjigu.putExtra("imeAutora", imeAutora.getText());
-                    intentUcitajKnjigu.putExtra("nazivKnjige", nazivKnjige.getText());
+                    intentUcitajKnjigu.putExtra("imeAutora", imeAutora.getText().toString());
+                    intentUcitajKnjigu.putExtra("nazivKnjige", nazivKnjige.getText().toString());
                     intentUcitajKnjigu.putExtra("kategorija", kategorija);
                     intentUcitajKnjigu.putExtra("uri", ucitanaSlika.toString());
                     setResult(RESULT_OK, intentUcitajKnjigu);
@@ -100,19 +100,7 @@ public class DodavanjeKnjigeAkt extends AppCompatActivity implements AdapterView
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-    /*
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intentUnosKnjige = new Intent();
-        intentUnosKnjige.putExtra("imeAutora", imeAutora.getText());
-        intentUnosKnjige.putExtra("nazivKnjige", nazivKnjige.getText());
-        intentUnosKnjige.putExtra("kategorija", kategorija);
-        intentUnosKnjige.putExtra("uri", ucitanaSlika.toString());
-        setResult(RESULT_OK, intentUnosKnjige);
-        finish();
-    }
-    */
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

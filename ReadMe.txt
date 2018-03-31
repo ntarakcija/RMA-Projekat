@@ -5,6 +5,7 @@
 +++++
 +++++ Spirala 1
 +++++ Uraðeno: 
-+++++ lista uraðenih zadataka i dijelova zadataka
++++++ Zadatak 1 - uraðen layout i filtriranje (drugaèije od traženog)
++++++ Zadatak 2 - uraðen kompletan
 +++++ Nije uraðeno:
-+++++ lista stvari koje nisu uraðene
++++++ Zadatak 1 - traženo filtriranje
