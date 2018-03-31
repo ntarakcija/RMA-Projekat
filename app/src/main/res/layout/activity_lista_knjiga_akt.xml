@@ -6,8 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ListaKnjigaAkt">
 
-    <ListView
-        android:id="@+id/listaKnjiga"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/listaKnjiga"
+            android:layout_width="match_parent"
+            android:layout_height="455dp">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/dPovratak"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Povratak" />
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

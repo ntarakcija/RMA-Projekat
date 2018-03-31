@@ -1,7 +1,10 @@
 package ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -28,5 +31,14 @@ public class ListaKnjigaAkt extends AppCompatActivity {
         ListView listaKnjiga = (ListView) findViewById(R.id.listaKnjiga);
         ListAdapter adapterKnjige = new KnjigaAdapter(this, R.layout.knjiga, filtriraneKnjige);
         listaKnjiga.setAdapter(adapterKnjige);
+
+        Button buttonPovratak = (Button) findViewById(R.id.dPovratak);
+        buttonPovratak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent povratak = new Intent(ListaKnjigaAkt.this, KategorijeAkt.class);
+                startActivity(povratak);
+            }
+        });
     }
 }

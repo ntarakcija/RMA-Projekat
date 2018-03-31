@@ -24,6 +24,7 @@ import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class DodavanjeKnjigeAkt extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Spinner spinerKategorije;
@@ -49,9 +50,11 @@ public class DodavanjeKnjigeAkt extends AppCompatActivity implements AdapterView
         buttonUpisiKnjigu = (Button) findViewById(R.id.dUpisiKnjigu);
         buttonPonisti = (Button) findViewById(R.id.dPonisti);
         imgViewNaslovnaStrana = (ImageView) findViewById(R.id.naslovnaStr);
+        ArrayList<String> kategorije = (ArrayList<String>) getIntent().getSerializableExtra("kategorije");
 
-        ArrayAdapter<CharSequence> adapterKategorije = ArrayAdapter.createFromResource(this, R.array.kategorije, android.R.layout.simple_spinner_item);
-        adapterKategorije.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //ArrayAdapter<String> adapterKategorije = ArrayAdapter.createFromResource(this, R.array.kategorije, android.R.layout.simple_spinner_item);
+        //adapterKategorije.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kategorije);
         spinerKategorije.setAdapter(adapterKategorije);
         spinerKategorije.setOnItemSelectedListener(this);
 

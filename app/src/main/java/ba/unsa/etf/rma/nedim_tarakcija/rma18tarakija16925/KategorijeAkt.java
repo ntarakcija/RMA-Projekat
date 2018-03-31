@@ -23,17 +23,26 @@ public class KategorijeAkt extends AppCompatActivity {
     ListView listListaKategorija;
     ArrayList<Knjiga> knjige = new ArrayList<Knjiga>();
     EditText tekstPretraga;
-    ArrayAdapter<CharSequence> adapterKategorije;
+    ArrayAdapter<String> adapterKategorije;
+    ArrayList<String> kategorije;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kategorije_akt);
 
+        kategorije = new ArrayList<String>();
+        // Hard kodirano za sada...
+        kategorije.add("Roman");
+        kategorije.add("Novela");
+        kategorije.add("Triler");
+        kategorije.add("Poezija");
+
         buttonDodajKnjigu = (Button) findViewById(R.id.dDodajKnjigu);
         listListaKategorija = (ListView) findViewById(R.id.listaKategorija);
 
-        adapterKategorije = ArrayAdapter.createFromResource(this, R.array.kategorije, android.R.layout.simple_list_item_1);
+        //adapterKategorije = ArrayAdapter.createFromResource(this, R.array.kategorije, android.R.layout.simple_list_item_1);
+        adapterKategorije =  new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, kategorije);
         listListaKategorija.setAdapter(adapterKategorije);
 
         buttonDodajKnjigu.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +50,7 @@ public class KategorijeAkt extends AppCompatActivity {
             public void onClick(View v) {
                 //startActivityForResult(new Intent(getApplicationContext(), DodavanjeKnjigeAkt.class), 1);
                 Intent dodavanjeKnjige = new Intent(KategorijeAkt.this, DodavanjeKnjigeAkt.class);
+                dodavanjeKnjige.putExtra("kategorije", kategorije);
                 startActivityForResult(dodavanjeKnjige, 1);
             }
         });
