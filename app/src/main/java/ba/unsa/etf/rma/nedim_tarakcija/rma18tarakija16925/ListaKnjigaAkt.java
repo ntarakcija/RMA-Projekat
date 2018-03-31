@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -28,7 +29,7 @@ public class ListaKnjigaAkt extends AppCompatActivity {
             if(knjige.get(i).getKategorija().equals(kategorija)) filtriraneKnjige.add(knjige.get(i));
         }
 
-        ListView listaKnjiga = (ListView) findViewById(R.id.listaKnjiga);
+        final ListView listaKnjiga = (ListView) findViewById(R.id.listaKnjiga);
         ListAdapter adapterKnjige = new KnjigaAdapter(this, R.layout.knjiga, filtriraneKnjige);
         listaKnjiga.setAdapter(adapterKnjige);
 
@@ -38,6 +39,13 @@ public class ListaKnjigaAkt extends AppCompatActivity {
             public void onClick(View v) {
                 Intent povratak = new Intent(ListaKnjigaAkt.this, KategorijeAkt.class);
                 startActivity(povratak);
+            }
+        });
+
+        listaKnjiga.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listaKnjiga.setSelected(true);
             }
         });
     }

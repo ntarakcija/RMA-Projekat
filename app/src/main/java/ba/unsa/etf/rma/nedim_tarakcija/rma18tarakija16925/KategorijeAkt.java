@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class KategorijeAkt extends AppCompatActivity {
 
     Button buttonDodajKnjigu;
+    Button buttonDoajKategoriju;
     ListView listListaKategorija;
     ArrayList<Knjiga> knjige = new ArrayList<Knjiga>();
     EditText tekstPretraga;
@@ -39,7 +40,9 @@ public class KategorijeAkt extends AppCompatActivity {
         kategorije.add("Poezija");
 
         buttonDodajKnjigu = (Button) findViewById(R.id.dDodajKnjigu);
+        buttonDoajKategoriju = (Button) findViewById(R.id.dDodajKategoriju);
         listListaKategorija = (ListView) findViewById(R.id.listaKategorija);
+        buttonDoajKategoriju.setEnabled(false);
 
         //adapterKategorije = ArrayAdapter.createFromResource(this, R.array.kategorije, android.R.layout.simple_list_item_1);
         adapterKategorije =  new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, kategorije);
@@ -77,6 +80,7 @@ public class KategorijeAkt extends AppCompatActivity {
         listListaKategorija.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listListaKategorija.setSelected(true);
                 Intent pregledKategorije = new Intent(KategorijeAkt.this, ListaKnjigaAkt.class);
                 pregledKategorije.putExtra("knjige", knjige);
                 pregledKategorije.putExtra("kategorija", listListaKategorija.getItemAtPosition(position).toString());

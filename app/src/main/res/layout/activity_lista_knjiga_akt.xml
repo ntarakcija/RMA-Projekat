@@ -14,6 +14,7 @@
         <ListView
             android:id="@+id/listaKnjiga"
             android:layout_width="match_parent"
+            android:listSelector="@color/colorAccent"
             android:layout_height="455dp">
 
         </ListView>
