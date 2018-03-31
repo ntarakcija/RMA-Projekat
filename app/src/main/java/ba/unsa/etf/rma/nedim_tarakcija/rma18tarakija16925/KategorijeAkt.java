@@ -68,8 +68,8 @@ public class KategorijeAkt extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent pregledKategorije = new Intent(KategorijeAkt.this, ListaKnjigaAkt.class);
-                //pregledKategorije.putParcelableArrayListExtra("knjige", (ArrayList) knjige);
                 pregledKategorije.putExtra("knjige", knjige);
+                pregledKategorije.putExtra("kategorija", listListaKategorija.getItemAtPosition(position).toString());
                 startActivity(pregledKategorije);
             }
         });
