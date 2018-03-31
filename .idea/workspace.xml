@@ -11,13 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65be88a4-ddd2-41d1-b026-798d5afe42a1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/nedim.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/DodavanjeKnjigeAkt.java" afterPath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/DodavanjeKnjigeAkt.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KategorijeAkt.java" afterPath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KategorijeAkt.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/Knjiga.java" afterPath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/Knjiga.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dodavanje_knjige_akt.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dodavanje_knjige_akt.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_kategorije_akt.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_kategorije_akt.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,15 +29,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="KategorijeAkt.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KategorijeAkt.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KategorijeAkt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state relative-caret-position="34">
+              <caret line="34" column="121" lean-forward="false" selection-start-line="34" selection-start-column="121" selection-end-line="34" selection-end-column="121" />
               <folding>
-                <element signature="e#567#575#0" expanded="true" />
-                <element signature="e#1158#1541#0" expanded="true" />
-                <element signature="e#1540#1541#0" expanded="true" />
+                <element signature="e#662#670#0" expanded="true" />
+                <element signature="e#1304#1687#0" expanded="true" />
+                <element signature="e#1686#1687#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,14 +88,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_kategorije_akt.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="activity_kategorije_akt.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_kategorije_akt.xml">
-          <provider selected="true" editor-type-id="android-designer2">
+          <provider editor-type-id="android-designer2">
             <state />
           </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -2129,6 +2125,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/Knjiga.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dodavanje_knjige_akt.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/DodavanjeKnjigeAkt.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_kategorije_akt.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KategorijeAkt.java" />
       </list>
     </option>
@@ -2389,7 +2386,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -2422,17 +2419,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_kategorije_akt.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/Knjiga.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -2443,17 +2429,6 @@
             <element signature="e#889#890#0" expanded="true" />
             <element signature="e#925#926#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dodavanje_knjige_akt.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2474,13 +2449,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KategorijeAkt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        <state relative-caret-position="34">
+          <caret line="34" column="121" lean-forward="false" selection-start-line="34" selection-start-column="121" selection-end-line="34" selection-end-column="121" />
           <folding>
-            <element signature="e#567#575#0" expanded="true" />
-            <element signature="e#1158#1541#0" expanded="true" />
-            <element signature="e#1540#1541#0" expanded="true" />
+            <element signature="e#662#670#0" expanded="true" />
+            <element signature="e#1304#1687#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dodavanje_knjige_akt.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_kategorije_akt.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>

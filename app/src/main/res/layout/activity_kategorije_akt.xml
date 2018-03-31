@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorDarkGray"
     tools:context=".KategorijeAkt">
 
     <LinearLayout
@@ -70,7 +71,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorGray" />
+            android:background="@color/colorLightGray"
+            android:gravity="center"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

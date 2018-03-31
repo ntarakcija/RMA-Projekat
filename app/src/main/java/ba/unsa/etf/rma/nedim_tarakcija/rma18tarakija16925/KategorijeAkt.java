@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,6 +21,8 @@ public class KategorijeAkt extends AppCompatActivity {
     Button buttonDodajKnjigu;
     ListView listListaKategorija;
     ArrayList<Knjiga> knjige = new ArrayList<Knjiga>();
+    EditText tekstPretraga;
+    ArrayAdapter<CharSequence> adapterKategorije;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +32,7 @@ public class KategorijeAkt extends AppCompatActivity {
         buttonDodajKnjigu = (Button) findViewById(R.id.dDodajKnjigu);
         listListaKategorija = (ListView) findViewById(R.id.listaKategorija);
 
-        ArrayAdapter<CharSequence> adapterKategorije = ArrayAdapter.createFromResource(this, R.array.kategorije, android.R.layout.simple_list_item_1);
+        adapterKategorije = ArrayAdapter.createFromResource(this, R.array.kategorije, android.R.layout.simple_list_item_1);
         listListaKategorija.setAdapter(adapterKategorije);
 
         buttonDodajKnjigu.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +41,25 @@ public class KategorijeAkt extends AppCompatActivity {
                 //startActivityForResult(new Intent(getApplicationContext(), DodavanjeKnjigeAkt.class), 1);
                 Intent dodavanjeKnjige = new Intent(KategorijeAkt.this, DodavanjeKnjigeAkt.class);
                 startActivityForResult(dodavanjeKnjige, 1);
+            }
+        });
+
+        tekstPretraga = (EditText) findViewById(R.id.tekstPretraga);
+
+        tekstPretraga.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                (KategorijeAkt.this).adapterKategorije.getFilter().filter(s);
             }
         });
     }
