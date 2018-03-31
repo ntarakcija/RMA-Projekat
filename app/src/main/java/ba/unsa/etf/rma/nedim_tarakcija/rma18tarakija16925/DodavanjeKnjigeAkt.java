@@ -1,5 +1,6 @@
 package ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -30,6 +31,7 @@ public class DodavanjeKnjigeAkt extends AppCompatActivity implements AdapterView
     EditText nazivKnjige;
     Button buttonNadjiSliku;
     Button buttonUpisiKnjigu;
+    Button buttonPonisti;
     ImageView imgViewNaslovnaStrana;
     String kategorija;
     String lokacijaSlike;
@@ -40,12 +42,13 @@ public class DodavanjeKnjigeAkt extends AppCompatActivity implements AdapterView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dodavanje_knjige_akt);
 
-        spinerKategorije = findViewById(R.id.sKategorijaKnjige);
-        imeAutora = findViewById(R.id.imeAutora);
-        nazivKnjige = findViewById(R.id.nazivKnjige);
-        buttonNadjiSliku = findViewById(R.id.dNadjiSliku);
-        buttonUpisiKnjigu = findViewById(R.id.dUpisiKnjigu);
-        imgViewNaslovnaStrana = findViewById(R.id.naslovnaStr);
+        spinerKategorije = (Spinner) findViewById(R.id.sKategorijaKnjige);
+        imeAutora = (EditText) findViewById(R.id.imeAutora);
+        nazivKnjige = (EditText) findViewById(R.id.nazivKnjige);
+        buttonNadjiSliku = (Button) findViewById(R.id.dNadjiSliku);
+        buttonUpisiKnjigu = (Button) findViewById(R.id.dUpisiKnjigu);
+        buttonPonisti = (Button) findViewById(R.id.dPonisti);
+        imgViewNaslovnaStrana = (ImageView) findViewById(R.id.naslovnaStr);
 
         ArrayAdapter<CharSequence> adapterKategorije = ArrayAdapter.createFromResource(this, R.array.kategorije, android.R.layout.simple_spinner_item);
         adapterKategorije.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -54,9 +57,36 @@ public class DodavanjeKnjigeAkt extends AppCompatActivity implements AdapterView
 
         buttonNadjiSliku.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View arg0) {
+            public void onClick(View v) {
                 Intent intentNaslovna = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intentNaslovna, 2);
+            }
+        });
+
+        buttonUpisiKnjigu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(imeAutora.getText().toString().equals("") || nazivKnjige.getText().toString().equals("") || !Uri.EMPTY.equals(ucitanaSlika)) {
+                    Toast.makeText(getBaseContext(),"Niste unijeli sve potrebne podatke.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent intentUcitajKnjigu = new Intent();
+                    intentUcitajKnjigu.putExtra("imeAutora", imeAutora.getText());
+                    intentUcitajKnjigu.putExtra("nazivKnjige", nazivKnjige.getText());
+                    intentUcitajKnjigu.putExtra("kategorija", kategorija);
+                    intentUcitajKnjigu.putExtra("uri", ucitanaSlika.toString());
+                    setResult(RESULT_OK, intentUcitajKnjigu);
+                    finish();
+                }
+            }
+        });
+
+        buttonPonisti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPonisti = new Intent();
+                setResult(RESULT_CANCELED, intentPonisti);
+                finish();
             }
         });
     }
@@ -70,7 +100,7 @@ public class DodavanjeKnjigeAkt extends AppCompatActivity implements AdapterView
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
+    /*
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -79,8 +109,10 @@ public class DodavanjeKnjigeAkt extends AppCompatActivity implements AdapterView
         intentUnosKnjige.putExtra("nazivKnjige", nazivKnjige.getText());
         intentUnosKnjige.putExtra("kategorija", kategorija);
         intentUnosKnjige.putExtra("uri", ucitanaSlika.toString());
+        setResult(RESULT_OK, intentUnosKnjige);
+        finish();
     }
-
+    */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
