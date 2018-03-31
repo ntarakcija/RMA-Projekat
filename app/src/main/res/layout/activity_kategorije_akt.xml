@@ -66,10 +66,11 @@
         </LinearLayout>
 
         <ListView
+            android:id="@+id/listaKategorija"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorGray"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@color/colorGray" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
