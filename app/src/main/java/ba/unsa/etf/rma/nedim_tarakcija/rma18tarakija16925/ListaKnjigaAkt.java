@@ -45,7 +45,7 @@ public class ListaKnjigaAkt extends AppCompatActivity {
         listaKnjiga.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                listaKnjiga.setSelected(true);
+                Toast.makeText(getBaseContext(), "clicked", Toast.LENGTH_SHORT).show();
             }
         });
     }
