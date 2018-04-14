@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:width="50dp"
-                    android:text="Pretraga"/>
+                    android:text="@string/pretraga"/>
 
             </LinearLayout>
 
@@ -54,14 +54,14 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:layout_gravity="left"
-                    android:text="Dodaj kategoriju" />
+                    android:text="@string/dodajKategoriju" />
 
                 <Button
                     android:id="@+id/dDodajKnjigu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Dodaj knjigu" />
+                    android:text="@string/dodajKnjigu" />
             </LinearLayout>
 
             <LinearLayout
@@ -78,14 +78,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:text="Kategorije" />
+                    android:text="@string/kategorije" />
 
                 <Button
                     android:id="@+id/dAutori"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Autori" />
+                    android:text="@string/autori" />
 
             </LinearLayout>
 

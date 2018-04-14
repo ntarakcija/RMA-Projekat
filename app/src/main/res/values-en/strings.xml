@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">rma18Tarakčija16925</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ucitajSliku">Load Image</string>
+    <string name="ponisti">Cancel</string>
+    <string name="upisiKnjigu">Confirm</string>
+    <string name="imeAutora">Author Name</string>
+    <string name="nazivKnjige">Book Title</string>
+    <string name="povratak">Back</string>
+    <string name="dodajKategoriju">Add Category</string>
+    <string name="dodajKnjigu">Add Book</string>
+    <string name="kategorije">Categories</string>
+    <string name="autori">Authors</string>
+    <string name="pretraga">Search</string>
+</resources>

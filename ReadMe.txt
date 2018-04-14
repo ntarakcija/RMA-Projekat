@@ -13,3 +13,12 @@
 +++++ Zadatak 1 - traženo filtriranje
 +++++ Zadatak 3 - ne prikazuje se naslovna strana pored naziva knjige i autora
 +++++ Zadatak 5
++++++
++++++ Spirala 2
++++++ Uraðeno: 
++++++ Zadatak 1 - uraðeno sve što se tražilo s istim nedostatkom kao i na spirali 1 (filtriranje)
++++++ Zadatak 2 - uraðen kompletan
++++++ Zadatak 4 - uraðen kompletan
++++++ Nije uraðeno:
++++++ Zadatak 1 - traženo filtriranje
++++++ Zadatak 3

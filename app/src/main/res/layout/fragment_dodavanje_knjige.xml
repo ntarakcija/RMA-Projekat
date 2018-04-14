@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="Ime autora"
+                android:hint="@string/imeAutora"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Naziv knjige"
+                android:hint="@string/nazivKnjige"
                 android:inputType="textPersonName" />
 
             <LinearLayout
@@ -56,7 +56,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Učitaj sliku" />
+                    android:text="@string/ucitajSliku" />
 
                 <Spinner
                     android:id="@+id/sKategorijaKnjige"
@@ -82,14 +82,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Poništi" />
+                android:text="@string/ponisti" />
 
             <Button
                 android:id="@+id/dUpisiKnjigu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Upiši knjigu" />
+                android:text="@string/upisiKnjigu" />
         </LinearLayout>
     </LinearLayout>
 
