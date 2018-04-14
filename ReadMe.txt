@@ -16,7 +16,8 @@
 +++++
 +++++ Spirala 2
 +++++ Uraðeno: 
-+++++ Zadatak 1 - uraðeno sve što se tražilo s istim nedostatkom kao i na spirali 1 (filtriranje)
++++++ Zadatak 1 - uraðeno sve što se tražilo s istim nedostatkom kao i na spirali 1 (filtriranje - drugaèije od traženog)
++++++           - ispravljena greška sa spirale 1 (slike se sada uèitavaju bez problema prilikom prikaza knjiga)
 +++++ Zadatak 2 - uraðen kompletan
 +++++ Zadatak 4 - uraðen kompletan
 +++++ Nije uraðeno:

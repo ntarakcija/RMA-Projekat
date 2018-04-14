@@ -10,10 +10,14 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65be88a4-ddd2-41d1-b026-798d5afe42a1" name="Default" comment="" />
+    <list default="true" id="65be88a4-ddd2-41d1-b026-798d5afe42a1" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/ReadMe.txt" afterPath="$PROJECT_DIR$/ReadMe.txt" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/ListeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/ListeFragment.java" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,24 +90,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListeFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/ListeFragment.java">
+      <file leaf-file-name="DodavanjeKnjigeFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/DodavanjeKnjigeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="935">
+              <caret line="104" column="161" lean-forward="false" selection-start-line="104" selection-start-column="161" selection-end-line="104" selection-end-column="161" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_knjige.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_knjige.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="ListeFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/ListeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="45" lean-forward="false" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+            <state relative-caret-position="321">
+              <caret line="100" column="56" lean-forward="false" selection-start-line="100" selection-start-column="56" selection-end-line="100" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KnjigeFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KnjigeFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="57" column="57" lean-forward="false" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -134,16 +145,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
               <caret line="13" column="43" lean-forward="false" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="colors.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -2191,7 +2192,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_kategorije_akt.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KategorijeAkt.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/ListeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_knjige.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KnjigeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/DodavanjeKnjigeFragment.java" />
@@ -2204,6 +2204,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-bs/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-hr/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/ListeFragment.java" />
       </list>
     </option>
   </component>
@@ -2269,13 +2270,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="rma18tarakcija16925" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
-              <item name="strings" type="c431d0b8:AndroidResGroupNode" />
             </path>
           </expand>
           <select />
@@ -2740,36 +2734,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KnjigeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="57" column="57" lean-forward="false" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
-          <folding>
-            <element signature="e#1037#1045#0" expanded="false" />
-            <element signature="e#1533#1677#0" expanded="false" />
-            <element signature="e#1676#1677#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/Biblioteka.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="24" column="85" lean-forward="false" selection-start-line="24" selection-start-column="85" selection-end-line="24" selection-end-column="85" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/DodavanjeKnjigeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="104" column="161" lean-forward="false" selection-start-line="104" selection-start-column="161" selection-end-line="104" selection-end-column="161" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2232#2240#0" expanded="false" />
-            <element signature="e#2801#3111#0" expanded="false" />
-            <element signature="e#3110#3111#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2816,10 +2785,10 @@
         <state relative-caret-position="153">
           <caret line="36" column="47" lean-forward="false" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
           <folding>
-            <element signature="e#1779#1800#0" expanded="true" />
-            <element signature="e#2336#2357#0" expanded="true" />
-            <element signature="e#3232#3249#0" expanded="true" />
-            <element signature="e#3488#3509#0" expanded="true" />
+            <element signature="e#1779#1800#0" expanded="false" />
+            <element signature="e#2336#2357#0" expanded="false" />
+            <element signature="e#3232#3249#0" expanded="false" />
+            <element signature="e#3488#3509#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2910,10 +2879,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/KnjigeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="57" column="57" lean-forward="false" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/DodavanjeKnjigeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="104" column="161" lean-forward="false" selection-start-line="104" selection-start-column="161" selection-end-line="104" selection-end-column="161" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ba/unsa/etf/rma/nedim_tarakcija/rma18tarakija16925/ListeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state relative-caret-position="321">
+          <caret line="100" column="56" lean-forward="false" selection-start-line="100" selection-start-column="56" selection-end-line="100" selection-end-column="56" />
           <folding />
         </state>
       </provider>

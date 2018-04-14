@@ -82,6 +82,26 @@ public class ListeFragment extends android.app.Fragment {
             }
         });
 
+        tekstPretraga.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                adapterKategorije =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, getArguments().getStringArrayList("Kategorije"));
+                listLista.setAdapter(adapterKategorije);
+                adapterKategorije.getFilter().filter(s);
+            }
+        });
+
         return v;
     }
 
