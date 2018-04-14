@@ -56,7 +56,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/ucitajSliku" />
+                    android:layout_marginRight="20dp"
+                    android:text="@string/ucitajSliku"
+                    android:background="@color/colorBlue"
+                    android:textColor="@color/colorWhite"/>
 
                 <Spinner
                     android:id="@+id/sKategorijaKnjige"
@@ -82,14 +85,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/ponisti" />
+                android:layout_marginRight="10dp"
+                android:text="@string/ponisti"
+                android:background="@color/colorAccent"
+                android:textColor="@color/colorWhite"/>
 
             <Button
                 android:id="@+id/dUpisiKnjigu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/upisiKnjigu" />
+                android:layout_marginLeft="10dp"
+                android:text="@string/upisiKnjigu"
+                android:background="@color/colorBlue"
+                android:textColor="@color/colorWhite"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -54,7 +54,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:layout_gravity="left"
-                    android:text="@string/dodajKategoriju" />
+                    android:text="@string/dodajKategoriju"
+                    android:background="@color/colorBlue"
+                    android:textColor="@color/colorWhite"/>
 
                 <Button
                     android:id="@+id/dDodajKnjigu"
