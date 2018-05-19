@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorDarkGray"
+    android:background="@color/colorWhite"
     tools:context=".KategorijeAkt">
 
         <LinearLayout
@@ -17,15 +17,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/tekstPretraga"
                     android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
+                    android:layout_gravity="center"
                     android:width="50dp"
                     android:background="@color/colorLightGray"
                     android:ems="10"
@@ -34,10 +35,13 @@
                 <Button
                     android:id="@+id/dPretraga"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:width="50dp"
-                    android:text="@string/pretraga"/>
+                    android:text="@string/pretraga"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorBlue"
+                    android:textColor="@color/colorWhite"/>
 
             </LinearLayout>
 
@@ -47,23 +51,27 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
+
                 <Button
                     android:id="@+id/dDodajKategoriju"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:layout_gravity="left"
                     android:text="@string/dodajKategoriju"
+                    android:layout_margin="5dp"
                     android:background="@color/colorBlue"
                     android:textColor="@color/colorWhite"/>
 
                 <Button
                     android:id="@+id/dDodajKnjigu"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="@string/dodajKnjigu" />
+                    android:text="@string/dodajKnjigu"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorBlue"
+                    android:textColor="@color/colorWhite"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -77,17 +85,22 @@
                 <Button
                     android:id="@+id/dKategorije"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="@string/kategorije" />
+                    android:text="@string/kategorije"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorBlue"
+                    android:textColor="@color/colorWhite"/>
 
                 <Button
                     android:id="@+id/dAutori"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="@string/autori" />
+                    android:text="@string/autori"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorBlue"
+                    android:textColor="@color/colorWhite"/>
 
             </LinearLayout>
 
