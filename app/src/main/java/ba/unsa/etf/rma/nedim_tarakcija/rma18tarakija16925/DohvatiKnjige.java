@@ -63,36 +63,46 @@ public class DohvatiKnjige extends AsyncTask<String, Integer, Void> {
                 String rezultat = convertStreamToString(is);
 
                 JSONObject jo = new JSONObject(rezultat);
-                JSONArray items = jo.getJSONArray("items");
+                JSONArray items = jo.optJSONArray("items");
+                if(items == null) continue;
 
                 for (int j = 0; j < items.length(); j++) {
-                    JSONObject knjiga = items.getJSONObject(j);
-                    JSONObject volumeInfo = knjiga.getJSONObject("volumeInfo");
-                    JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
+                    JSONObject knjiga = items.optJSONObject(j);
+                    if(knjiga == null) continue;
+                    JSONObject volumeInfo = knjiga.optJSONObject("volumeInfo");
+                    if(volumeInfo == null) continue;
+                    JSONObject imageLinks = volumeInfo.optJSONObject("imageLinks");
+                    if(imageLinks == null) continue;
 
                     // id
-                    String id = knjiga.getString("id");
+                    String id = knjiga.optString("id");
+                    if(id == null) continue;
 
                     // naziv
-                    String naziv = volumeInfo.getString("title");
+                    String naziv = volumeInfo.optString("title");
+                    if(naziv == null) continue;
 
                     // autori
-                    JSONArray autoriJSON = volumeInfo.getJSONArray("authors");
+                    JSONArray autoriJSON = volumeInfo.optJSONArray("authors");
+                    if(autoriJSON == null) continue;
                     ArrayList<Autor> autori = new ArrayList<Autor>();
                     for(int k = 0; k < autoriJSON.length(); k++)
                         autori.add(new Autor((String) autoriJSON.get(k), id));
 
                     // opis
-                    String opis = volumeInfo.getString("description");
+                    String opis = volumeInfo.optString("description");
+                    if(opis == null) continue;
 
                     // datum objavljivanja
-                    String datumObjavljivanja = volumeInfo.getString("publishedDate");
+                    String datumObjavljivanja = volumeInfo.optString("publishedDate");
+                    if(datumObjavljivanja == null) continue;
 
                     // slika
-                    URL slika = new URL(imageLinks.getString("thumbnail"));
+                    URL slika = new URL(imageLinks.optString("thumbnail"));
+                    if(slika == null) continue;
 
                     // broj stranica
-                    int brojStranica = Integer.parseInt(volumeInfo.getString("pageCount"));
+                    int brojStranica = volumeInfo.optInt("pageCount");
 
                     rez.add(new Knjiga(id, naziv, autori, opis, datumObjavljivanja, slika, brojStranica));
                 }

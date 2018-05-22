@@ -46,11 +46,15 @@ public class KnjigePoznanika extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         final ResultReceiver receiver = intent.getParcelableExtra("receiver");
         String korisnikId = intent.getStringExtra("id");
+        Bundle bundle = new Bundle();
+        receiver.send(STATUS_START, bundle);
+
         String query = null;
         try {
             query = URLEncoder.encode(korisnikId, "utf-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+            receiver.send(STATUS_ERROR, bundle);
         }
 
         String link​ = "https://www.googleapis.com/books/v1/users/";
@@ -125,13 +129,15 @@ public class KnjigePoznanika extends IntentService {
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            receiver.send(STATUS_ERROR, bundle);
         } catch (IOException e) {
             e.printStackTrace();
+            receiver.send(STATUS_ERROR, bundle);
         } catch (JSONException e) {
             e.printStackTrace();
+            receiver.send(STATUS_ERROR, bundle);
         }
 
-        Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("rezultat", rez);
 
         receiver.send(STATUS_FINISH, bundle);

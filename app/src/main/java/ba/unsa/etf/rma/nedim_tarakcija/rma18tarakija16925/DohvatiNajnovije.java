@@ -43,7 +43,7 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
             e.printStackTrace();
         }
 
-        String link​ = "https://www.googleapis.com/books/v1/volumes?q=inauthor";
+        String link​ = "https://www.googleapis.com/books/v1/volumes?q=inauthor:";
         String rezCount = "";
         String url1 = link​ + query + rezCount;
 
@@ -58,6 +58,48 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
             InputStream is = urlConnection.getInputStream();
             String rezultat = convertStreamToString(is);
 
+            JSONObject jo = new JSONObject(rezultat);
+            JSONArray items = jo.optJSONArray("items");
+
+            for (int j = 0; j < items.length(); j++) {
+                JSONObject knjiga = items.optJSONObject(j);
+                if(knjiga == null) continue;
+                JSONObject volumeInfo = knjiga.optJSONObject("volumeInfo");
+                if(volumeInfo == null) continue;
+                JSONObject imageLinks = volumeInfo.optJSONObject("imageLinks");
+                if(imageLinks == null) continue;
+
+                // id
+                String id = knjiga.optString("id");
+                if(id == null) continue;
+
+                // naziv
+                String naziv = volumeInfo.optString("title");
+                if(naziv == null) continue;
+
+                // autori
+                JSONArray autoriJSON = volumeInfo.optJSONArray("authors");
+                if(autoriJSON == null) continue;
+                ArrayList<Autor> autori = new ArrayList<Autor>();
+                for(int k = 0; k < autoriJSON.length(); k++)
+                    autori.add(new Autor((String) autoriJSON.get(k), id));
+
+                // opis
+                String opis = volumeInfo.optString("description");
+                if(opis == null) continue;
+
+                // datum objavljivanja
+                String datumObjavljivanja = volumeInfo.optString("publishedDate");
+                if(datumObjavljivanja == null) continue;
+
+                // slika
+                URL slika = new URL(imageLinks.optString("thumbnail"));
+                if(slika == null) continue;
+
+                // broj stranica
+                int brojStranica = volumeInfo.optInt("pageCount");
+
+            /*
             JSONObject jo = new JSONObject(rezultat);
             JSONArray items = jo.getJSONArray("items");
 
@@ -90,12 +132,15 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
                 // broj stranica
                 int brojStranica = Integer.parseInt(volumeInfo.getString("pageCount"));
 
+                */
+
                 // Odabir knjiga samo od datog autora
                 Knjiga novaKnjiga = new Knjiga(id, naziv, autori, opis, datumObjavljivanja, slika, brojStranica);
-                for(int k = 0; k < novaKnjiga.getAutori().size(); k++)
-                    if(novaKnjiga.getAutori().get(k).getImeiPrezime().equals(params[0]))
+                //for(int k = 0; k < novaKnjiga.getAutori().size(); k++)
+                    //if(novaKnjiga.getAutori().get(k).getImeiPrezime().equals(params[0]))
                         sveKnjige.add(novaKnjiga);
             }
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -113,7 +158,7 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
             }
         });
 
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 5; i++) {
             if(i >= sveKnjige.size()) break;
             rez.add(sveKnjige.get(i));
         }

@@ -44,9 +44,9 @@ public class KategorijeAkt extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         ListeFragment listeF = new ListeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Kategorije", kategorije);
-        listeF.setArguments(bundle);
+        //Bundle bundle = new Bundle();
+        //bundle.putStringArrayList("Kategorije", kategorije);
+        //listeF.setArguments(bundle);
 
         fragmentTransaction.replace(R.id.fragment, listeF);
         fragmentTransaction.commit();

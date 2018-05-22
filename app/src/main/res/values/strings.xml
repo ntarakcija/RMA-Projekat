@@ -20,4 +20,9 @@
     <string name="problemSlika">Problem sa slikom.</string>
     <string name="pronadjeno">pronađeno.</string>
     <string name="knjiga">knjiga</string>
+    <string name="kategorijaPostoji">Kategorija već postoji.</string>
+    <string name="kategorijaDodana">Dodana nova kategorija.</string>
+    <string name="webServisPokrenut">Web servis pokrenut.</string>
+    <string name="webServisGreska">Greška prilikom pokretanja web servisa.</string>
+    <string name="kategorijePrazne">Ne postoji nijedna kategorija.</string>
 </resources>

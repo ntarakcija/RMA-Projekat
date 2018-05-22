@@ -9,17 +9,15 @@ import java.util.ArrayList;
 public class Biblioteka {
     private static Biblioteka biblioteka = new Biblioteka();
     ArrayList<Knjiga> knjige;
+    ArrayList<String> kategorije;
 
     private Biblioteka() {
-        knjige = new ArrayList<Knjiga>();
+        knjige = new ArrayList<>();
+        kategorije = new ArrayList<>();
     }
 
     public static Biblioteka getBiblioteku() {
         return biblioteka;
-    }
-
-    public ArrayList<Knjiga> getKnjige() {
-        return knjige;
     }
 
     public void dodajKnjigu(String id, String naziv, ArrayList<Autor> autori, String opis, String datumObjavljivanja, URL slika, int brojStranica) {
@@ -32,5 +30,17 @@ public class Biblioteka {
 
     public void dodajKnjigu(Knjiga knjiga) {
         knjige.add(knjiga);
+    }
+
+    public ArrayList<Knjiga> getKnjige() {
+        return knjige;
+    }
+
+    public ArrayList<String> getKategorije() {
+        return kategorije;
+    }
+
+    public void dodajKategoriju(String kategorija) {
+        this.kategorije.add(kategorija);
     }
 }

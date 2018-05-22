@@ -40,7 +40,8 @@ public class FragmentOnline extends android.app.Fragment implements
         buttonDodajKnjigu = (Button) v.findViewById(R.id.dAdd);
         knjigeRezultat = new ArrayList<Knjiga>();
 
-        kategorije = getArguments().getStringArrayList("Kategorije");
+        Biblioteka b = Biblioteka.getBiblioteku();
+        kategorije = b.getKategorije();
         ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, kategorije);
         spinnerKategorije.setAdapter(adapterKategorije);
 
@@ -104,6 +105,9 @@ public class FragmentOnline extends android.app.Fragment implements
     @Override
     public void onReceiveResults(int resultCode, Bundle resultData) {
         switch (resultCode) {
+            case 0:
+                Toast.makeText(getActivity(), getString(R.string.webServisPokrenut),Toast.LENGTH_SHORT).show();
+                break;
             case 1:
                 ArrayList<Knjiga> knjige = resultData.getParcelableArrayList("rezultat");
 
@@ -125,6 +129,9 @@ public class FragmentOnline extends android.app.Fragment implements
                 }
 
                 break;
+            case 2:
+                Toast.makeText(getActivity(), getString(R.string.webServisGreska),Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
@@ -137,18 +144,20 @@ public class FragmentOnline extends android.app.Fragment implements
                 new DohvatiNajnovije((DohvatiNajnovije.IDohvatiNajnovijeDone) FragmentOnline.this).execute(autor);
             }
             // korisnici
-            else if(unos.substring(0, 9).equals("korisnik:")) {
-                String id = unos.substring(9);
+            else if(unos.length() >= 9) {
+                if (unos.substring(0, 9).equals("korisnik:")) {
+                    String id = unos.substring(9);
 
-                Intent intent = new Intent(Intent.ACTION_SYNC, null, getActivity(), KnjigePoznanika.class);
+                    Intent intent = new Intent(Intent.ACTION_SYNC, null, getActivity(), KnjigePoznanika.class);
 
-                MojResultReceiver mReceiver = new MojResultReceiver(new Handler());
-                mReceiver.setmReceiver(FragmentOnline.this);
+                    MojResultReceiver mReceiver = new MojResultReceiver(new Handler());
+                    mReceiver.setmReceiver(FragmentOnline.this);
 
-                intent.putExtra("id", id);
-                intent.putExtra("receiver", (ResultReceiver) mReceiver);
+                    intent.putExtra("id", id);
+                    intent.putExtra("receiver", (ResultReceiver) mReceiver);
 
-                getActivity().startService(intent);
+                    getActivity().startService(intent);
+                }
             }
             // knjige
             else {
@@ -165,6 +174,10 @@ public class FragmentOnline extends android.app.Fragment implements
 
     public void dodajKnjigu() {
         Biblioteka b = Biblioteka.getBiblioteku();
+        if(b.getKategorije().isEmpty()) {
+            Toast.makeText(getActivity(), getString(R.string.kategorijePrazne), Toast.LENGTH_SHORT).show();
+            return;
+        }
         int i = spinnerRezultat.getSelectedItemPosition();
         Knjiga k = new Knjiga();
         k.setId(knjigeRezultat.get(i).getId());

@@ -59,7 +59,9 @@ public class DodavanjeKnjigeFragment extends android.app.Fragment {
         buttonPonisti = (Button) v.findViewById(R.id.dPonisti);
         imgViewNaslovnaStrana = (ImageView) v.findViewById(R.id.naslovnaStr);
 
-        kategorije = getArguments().getStringArrayList("Kategorije");
+        //kategorije = getArguments().getStringArrayList("kategorije");
+        Biblioteka b = Biblioteka.getBiblioteku();
+        kategorije = b.getKategorije();
         ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, kategorije);
         spinerKategorije.setAdapter(adapterKategorije);
 
@@ -104,7 +106,11 @@ public class DodavanjeKnjigeFragment extends android.app.Fragment {
             Toast.makeText(getActivity(), getString(R.string.nedovoljnoPodataka), Toast.LENGTH_SHORT).show();
         }
         else {
-            Biblioteka biblioteka = Biblioteka.getBiblioteku();
+            Biblioteka b = Biblioteka.getBiblioteku();
+            if(b.getKategorije().isEmpty()) {
+                Toast.makeText(getActivity(), getString(R.string.kategorijePrazne), Toast.LENGTH_SHORT).show();
+                return;
+            }
             ArrayList<Autor> autori = new ArrayList<Autor>();
             autori.add(new Autor(imeAutora.getText().toString()));
             Knjiga knjiga = new Knjiga();
@@ -117,7 +123,7 @@ public class DodavanjeKnjigeFragment extends android.app.Fragment {
             knjiga.setKategorija(spinerKategorije.getSelectedItem().toString());
             knjiga.setNacinDodavanja("ofline");
 
-            biblioteka.dodajKnjigu(knjiga);
+            b.dodajKnjigu(knjiga);
             Toast.makeText(getActivity(), getString(R.string.dodanaNovaKnjiga),Toast.LENGTH_SHORT).show();
             imeAutora.setText("");
             nazivKnjige.setText("");
