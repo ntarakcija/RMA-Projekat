@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorWhite">
+        android:background="@color/colorWhite"
+        android:padding="5dp">
 
         <ListView
             android:id="@+id/listaKnjiga"
@@ -20,13 +21,17 @@
 
         <Button
             android:id="@+id/dPovratak"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:text="@string/povratak"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="10dp"
             android:background="@color/colorBlue"
-            android:textColor="@color/colorWhite"/>
+            android:text="@string/povratak"
+            android:textColor="@color/colorWhite"
+            android:layout_below="@+id/listaKnjiga"
 
-    </LinearLayout>
+            />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

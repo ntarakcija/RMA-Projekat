@@ -40,15 +40,24 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
             TextView textImeAutora = (TextView) v.findViewById(R.id.eAutor);
 
             if (imgViewNaslovna != null) {
-                imgViewNaslovna.setImageURI(knjiga.getLokacijaSlike());
+                if(knjiga.getNacinDodavanja().equals("ofline"))
+                    imgViewNaslovna.setImageURI(knjiga.getLokacijaSlike());
+                else
+                    new DownloadImage(imgViewNaslovna).execute(knjiga.getSlika().toString());
             }
 
             if (textNazivKnjige != null) {
-                textNazivKnjige.setText(knjiga.getNazivKnjige());
+                textNazivKnjige.setText(knjiga.getNaziv());
             }
 
             if (textImeAutora != null) {
-                textImeAutora.setText(knjiga.getImeAutora());
+                String autori = "";
+                for(int i = 0; i < knjiga.getAutori().size(); i++) {
+                    autori = autori + knjiga.getAutori().get(i).getImeiPrezime();
+                    if(i == knjiga.getAutori().size() - 1) break;
+                    else autori = autori + ", ";
+                }
+                textImeAutora.setText(autori);
             }
         }
 

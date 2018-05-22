@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:enabled="true"
+            android:name=".KnjigePoznanika"/>
+
     </application>
 
 </manifest>

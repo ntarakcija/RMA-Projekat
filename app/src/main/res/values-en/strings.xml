@@ -12,4 +12,12 @@
     <string name="kategorije">Categories</string>
     <string name="autori">Authors</string>
     <string name="pretraga">Search</string>
+    <string name="dodajOnline">Add book online</string>
+    <string name="dodaj">Add</string>
+    <string name="nijePronadjeno">Nothing found.</string>
+    <string name="nedovoljnoPodataka">Please fill all the fields.</string>
+    <string name="dodanaNovaKnjiga">Book added.</string>
+    <string name="problemSlika">Picture could not load.</string>
+    <string name="pronadjeno">found.</string>
+    <string name="knjiga">books</string>
 </resources>

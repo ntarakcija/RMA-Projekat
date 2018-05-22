@@ -12,5 +12,12 @@
     <string name="kategorije">Kategorije</string>
     <string name="autori">Autori</string>
     <string name="pretraga">Pretraga</string>
-
+    <string name="dodajOnline">Dodaj knjigu online</string>
+    <string name="dodaj">Dodaj</string>
+    <string name="nijePronadjeno">Nije pronađena nijedna knjiga.</string>
+    <string name="nedovoljnoPodataka">Niste unijeli sve potrebne podatke.</string>
+    <string name="dodanaNovaKnjiga">Knjiga dodana.</string>
+    <string name="problemSlika">Problem sa slikom.</string>
+    <string name="pronadjeno">pronađeno.</string>
+    <string name="knjiga">knjiga</string>
 </resources>

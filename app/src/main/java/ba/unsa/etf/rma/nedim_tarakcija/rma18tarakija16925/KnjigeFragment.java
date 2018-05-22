@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -34,9 +35,17 @@ public class KnjigeFragment extends android.app.Fragment {
                 filtriraneKnjige.add(knjige.get(i));
         }
 
-        final ListView listaKnjiga = (ListView) v.findViewById(R.id.listaKnjiga);
+        ListView listaKnjiga = (ListView) v.findViewById(R.id.listaKnjiga);
         ListAdapter adapterKnjige = new KnjigaAdapter(getActivity(), R.layout.knjiga, filtriraneKnjige);
         listaKnjiga.setAdapter(adapterKnjige);
+
+        //ArrayList<String> naziviKnjiga = new ArrayList<String>();
+        //for(int i = 0; i < knjige.size(); i++)
+          //  naziviKnjiga.add(knjige.get(i).getNaziv());
+
+        //ArrayAdapter<String> adapterRezultat = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, naziviKnjiga);
+        //listaKnjiga.setAdapter(adapterRezultat);
+
 
         buttonPovratak.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,12 +60,14 @@ public class KnjigeFragment extends android.app.Fragment {
 
     private void povratak() {
         FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        ListeFragment listeF = new ListeFragment();
+        //ListeFragment listeF = new ListeFragment();
+        fragmentManager.popBackStack();
+        //fragmentTransaction.replace(R.id.fragment, listeF);
+        //fragmentTransaction.addToBackStack(null);
+        //fragmentTransaction.commit();
 
-        fragmentTransaction.replace(R.id.fragment, listeF);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
     }
+
 }

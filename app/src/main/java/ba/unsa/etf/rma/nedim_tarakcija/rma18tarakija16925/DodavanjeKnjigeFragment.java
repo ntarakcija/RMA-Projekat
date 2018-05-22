@@ -28,6 +28,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
@@ -89,21 +91,34 @@ public class DodavanjeKnjigeFragment extends android.app.Fragment {
 
     private void ponisti() {
         FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        ListeFragment listeFragmentF = new ListeFragment();
-        fragmentTransaction.replace(R.id.fragment, listeFragmentF);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //ListeFragment listeFragmentF = new ListeFragment();
+        //fragmentTransaction.replace(R.id.fragment, listeFragmentF);
+        fragmentManager.popBackStack();
+        //fragmentTransaction.addToBackStack(null);
+        //fragmentTransaction.commit();
     }
 
     private void upisiKnjigu() {
         if(imeAutora.getText().toString().equals("") || nazivKnjige.getText().toString().equals("")) {
-            Toast.makeText(getActivity(),"Niste unijeli sve potrebne podatke.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.nedovoljnoPodataka), Toast.LENGTH_SHORT).show();
         }
         else {
             Biblioteka biblioteka = Biblioteka.getBiblioteku();
-            biblioteka.dodajKnjigu(imeAutora.getText().toString(), nazivKnjige.getText().toString(), spinerKategorije.getSelectedItem().toString(), lokacijaSlike);
-            Toast.makeText(getActivity(),"Dodali ste novu knjigu.", Toast.LENGTH_SHORT).show();
+            ArrayList<Autor> autori = new ArrayList<Autor>();
+            autori.add(new Autor(imeAutora.getText().toString()));
+            Knjiga knjiga = new Knjiga();
+            knjiga.setId("");
+            knjiga.setNaziv(nazivKnjige.getText().toString());
+            knjiga.setAutori(autori);
+            knjiga.setOpis("");
+            knjiga.setDatumObjavljivanja("");
+            knjiga.setLokacijaSlike(lokacijaSlike);
+            knjiga.setKategorija(spinerKategorije.getSelectedItem().toString());
+            knjiga.setNacinDodavanja("ofline");
+
+            biblioteka.dodajKnjigu(knjiga);
+            Toast.makeText(getActivity(), getString(R.string.dodanaNovaKnjiga),Toast.LENGTH_SHORT).show();
             imeAutora.setText("");
             nazivKnjige.setText("");
         }
