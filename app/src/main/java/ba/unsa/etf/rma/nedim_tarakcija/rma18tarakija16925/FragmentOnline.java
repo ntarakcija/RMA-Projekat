@@ -141,12 +141,14 @@ public class FragmentOnline extends android.app.Fragment implements
             // autori
             if(unos.substring(0, 6).equals("autor:")) {
                 String autor = unos.substring(6);
+                if(autor.isEmpty()) return;
                 new DohvatiNajnovije((DohvatiNajnovije.IDohvatiNajnovijeDone) FragmentOnline.this).execute(autor);
             }
             // korisnici
             else if(unos.length() >= 9) {
                 if (unos.substring(0, 9).equals("korisnik:")) {
                     String id = unos.substring(9);
+                    if(id.isEmpty()) return;
 
                     Intent intent = new Intent(Intent.ACTION_SYNC, null, getActivity(), KnjigePoznanika.class);
 

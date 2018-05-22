@@ -23,6 +23,6 @@
     <string name="kategorijaPostoji">Category already exists.</string>
     <string name="kategorijaDodana">New category added.</string>
     <string name="webServisPokrenut">Web service started.</string>
-    <string name="webServisGreska">Web service couldn not start.</string>
+    <string name="webServisGreska">Error.</string>
     <string name="kategorijePrazne">Categories are empty.</string>
 </resources>
