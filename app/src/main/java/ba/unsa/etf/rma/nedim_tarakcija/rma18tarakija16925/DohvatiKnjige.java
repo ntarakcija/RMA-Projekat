@@ -63,6 +63,7 @@ public class DohvatiKnjige extends AsyncTask<String, Integer, Void> {
                 String rezultat = convertStreamToString(is);
 
                 JSONObject jo = new JSONObject(rezultat);
+                if(jo == null) continue;
                 JSONArray items = jo.optJSONArray("items");
                 if(items == null) continue;
 

@@ -25,4 +25,6 @@
     <string name="webServisPokrenut">Web servis pokrenut.</string>
     <string name="webServisGreska">Desila se greška.</string>
     <string name="kategorijePrazne">Ne postoji nijedna kategorija.</string>
+    <string name="unesiKategoriju">Unesi kategoriju</string>
+    <string name="pretrazi">knjiga, autor, korisnik</string>
 </resources>

@@ -71,7 +71,15 @@ public class KnjigePoznanika extends IntentService {
             String rezultat = convertStreamToString(is);
 
             JSONObject jo = new JSONObject(rezultat);
+            if(jo == null) {
+                receiver.send(STATUS_ERROR, bundle);
+                return;
+            }
             JSONArray items = jo.getJSONArray("items");
+            if(items == null) {
+                receiver.send(STATUS_ERROR, bundle);
+                return;
+            }
 
             ArrayList<String> policeId = new ArrayList<>();
 
@@ -89,6 +97,7 @@ public class KnjigePoznanika extends IntentService {
                     String rezultat1 = convertStreamToString(is1);
 
                     JSONObject jo1 = new JSONObject(rezultat1);
+                    if(jo1 == null) continue;
                     JSONArray items1 = jo1.optJSONArray("items");
                     if(items1 == null) continue;
 

@@ -160,6 +160,11 @@ public class FragmentOnline extends android.app.Fragment implements
 
                     getActivity().startService(intent);
                 }
+                // knjige
+                else {
+                    String[] knjige = unos.split(";");
+                    new DohvatiKnjige((DohvatiKnjige.IDohvatiKnjigeDone) FragmentOnline.this).execute(knjige);
+                }
             }
             // knjige
             else {

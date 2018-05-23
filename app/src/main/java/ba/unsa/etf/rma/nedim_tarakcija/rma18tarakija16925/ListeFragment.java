@@ -37,6 +37,7 @@ public class ListeFragment extends android.app.Fragment {
     ArrayAdapter<String> adapterKategorije;
     Button buttonDodajOnline;
     ArrayList<String> kat;
+    Boolean kategorijeAutori = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,10 +58,16 @@ public class ListeFragment extends android.app.Fragment {
         listLista = (ListView) getView().findViewById(R.id.listaKategorija);
         buttonDodajOnline = (Button) getView().findViewById(R.id.dDodajOnline);
 
-        Biblioteka b = Biblioteka.getBiblioteku();
-        ArrayList<String> kategorije = b.getKategorije();
-        adapterKategorije = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, kategorije);
-        listLista.setAdapter(adapterKategorije);
+        if(kategorijeAutori) {
+            Biblioteka b = Biblioteka.getBiblioteku();
+            ArrayList<String> kategorije = b.getKategorije();
+            adapterKategorije = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, kategorije);
+            listLista.setAdapter(adapterKategorije);
+            kategorijeAutori = true;
+        }
+        else {
+            prikaziAutore();
+        }
 
         buttonKategorije.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,8 +137,23 @@ public class ListeFragment extends android.app.Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(kategorijeAutori) {
+            //Biblioteka b = Biblioteka.getBiblioteku();
+            //ArrayList<String> kategorije = b.getKategorije();
+            //adapterKategorije = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, kategorije);
+            //listLista.setAdapter(adapterKategorije);
+            //kategorijeAutori = true;
+            prikaziKategorije();
+        }
+        else {
+            prikaziAutore();
+        }
+    }
+
     public void prikaziKategorije() {
-        //ArrayList<String> kategorije = getArguments().getStringArrayList("Kategorije");
         Biblioteka b = Biblioteka.getBiblioteku();
         ArrayList<String> kategorije = b.getKategorije();
         adapterKategorije = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, kategorije);
@@ -139,6 +161,7 @@ public class ListeFragment extends android.app.Fragment {
         tekstPretraga.setVisibility(View.VISIBLE);
         buttonPretraga.setVisibility(View.VISIBLE);
         buttonDodajKategoriju.setVisibility(View.VISIBLE);
+        kategorijeAutori = true;
     }
 
     public void prikaziAutore() {
@@ -175,6 +198,7 @@ public class ListeFragment extends android.app.Fragment {
         tekstPretraga.setVisibility(View.GONE);
         buttonPretraga.setVisibility(View.GONE);
         buttonDodajKategoriju.setVisibility(View.GONE);
+        kategorijeAutori = false;
     }
 
     private void dodajKnjigu() {
@@ -197,8 +221,17 @@ public class ListeFragment extends android.app.Fragment {
 
         KnjigeFragment knjigeF = new KnjigeFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("Kategorija", listLista.getItemAtPosition(position).toString());
-        knjigeF.setArguments(bundle);
+
+        if(kategorijeAutori) {
+            bundle.putString("kategorija", listLista.getItemAtPosition(position).toString());
+            bundle.putBoolean("kategorijeAutori", kategorijeAutori);
+            knjigeF.setArguments(bundle);
+        }
+        else {
+            bundle.putString("autor", listLista.getItemAtPosition(position).toString());
+            bundle.putBoolean("kategorijeAutori", kategorijeAutori);
+            knjigeF.setArguments(bundle);
+        }
 
         fragmentTransaction.replace(R.id.fragment, knjigeF);
         fragmentTransaction.addToBackStack(null);
@@ -210,9 +243,6 @@ public class ListeFragment extends android.app.Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         FragmentOnline dodavanjeOnlinef = new FragmentOnline();
-        //Bundle bundle = new Bundle();
-        //bundle.putStringArrayList("kategorije", kat);
-        //dodavanjeOnlinef.setArguments(bundle);
 
         fragmentTransaction.replace(R.id.fragment, dodavanjeOnlinef);
         fragmentTransaction.addToBackStack(null);

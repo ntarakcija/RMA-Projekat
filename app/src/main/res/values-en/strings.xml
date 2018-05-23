@@ -25,4 +25,6 @@
     <string name="webServisPokrenut">Web service started.</string>
     <string name="webServisGreska">Error.</string>
     <string name="kategorijePrazne">Categories are empty.</string>
+    <string name="unesiKategoriju">Enter category</string>
+    <string name="pretrazi">book, author, user</string>
 </resources>

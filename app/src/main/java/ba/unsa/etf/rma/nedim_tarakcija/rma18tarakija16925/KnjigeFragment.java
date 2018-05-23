@@ -30,22 +30,24 @@ public class KnjigeFragment extends android.app.Fragment {
         ArrayList<Knjiga> knjige = biblioteka.getKnjige();
         ArrayList<Knjiga> filtriraneKnjige = new ArrayList<Knjiga>();
 
-        for(int i = 0; i < knjige.size(); i++) {
-            if(knjige.get(i).getKategorija().equals(getArguments().getString("Kategorija")))
-                filtriraneKnjige.add(knjige.get(i));
+        if(getArguments().getBoolean("kategorijeAutori")) {
+            for (int i = 0; i < knjige.size(); i++) {
+                if (knjige.get(i).getKategorija().equals(getArguments().getString("kategorija")))
+                    filtriraneKnjige.add(knjige.get(i));
+            }
+        }
+        else {
+            String[] autor = getArguments().getString("autor").split("\n");
+            for (int i = 0; i < knjige.size(); i++) {
+                for(int j = 0; j < knjige.get(i).getAutori().size(); j++)
+                    if (knjige.get(i).getAutori().get(j).getImeiPrezime().equals(autor[0]))
+                        filtriraneKnjige.add(knjige.get(i));
+            }
         }
 
         ListView listaKnjiga = (ListView) v.findViewById(R.id.listaKnjiga);
         ListAdapter adapterKnjige = new KnjigaAdapter(getActivity(), R.layout.knjiga, filtriraneKnjige);
         listaKnjiga.setAdapter(adapterKnjige);
-
-        //ArrayList<String> naziviKnjiga = new ArrayList<String>();
-        //for(int i = 0; i < knjige.size(); i++)
-          //  naziviKnjiga.add(knjige.get(i).getNaziv());
-
-        //ArrayAdapter<String> adapterRezultat = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, naziviKnjiga);
-        //listaKnjiga.setAdapter(adapterRezultat);
-
 
         buttonPovratak.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,17 +59,9 @@ public class KnjigeFragment extends android.app.Fragment {
         return v;
     }
 
-
     private void povratak() {
         FragmentManager fragmentManager = getFragmentManager();
-        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        //ListeFragment listeF = new ListeFragment();
         fragmentManager.popBackStack();
-        //fragmentTransaction.replace(R.id.fragment, listeF);
-        //fragmentTransaction.addToBackStack(null);
-        //fragmentTransaction.commit();
-
     }
 
 }

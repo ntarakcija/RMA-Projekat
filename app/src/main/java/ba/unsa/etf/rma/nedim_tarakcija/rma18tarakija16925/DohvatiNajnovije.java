@@ -59,7 +59,9 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
             String rezultat = convertStreamToString(is);
 
             JSONObject jo = new JSONObject(rezultat);
+            if(jo == null) return null;
             JSONArray items = jo.optJSONArray("items");
+            if(items == null) return null;
 
             for (int j = 0; j < items.length(); j++) {
                 JSONObject knjiga = items.optJSONObject(j);
