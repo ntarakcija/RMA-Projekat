@@ -2,6 +2,8 @@ package ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +30,8 @@ public class FragmentOnline extends android.app.Fragment implements
     Button buttonDodajKnjigu;
     ArrayList<String> kategorije;
     ArrayList<Knjiga> knjigeRezultat;
+    BazaOpenHelper helper;
+    SQLiteDatabase db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,8 +44,18 @@ public class FragmentOnline extends android.app.Fragment implements
         buttonDodajKnjigu = (Button) v.findViewById(R.id.dAdd);
         knjigeRezultat = new ArrayList<Knjiga>();
 
-        Biblioteka b = Biblioteka.getBiblioteku();
-        kategorije = b.getKategorije();
+        helper = new BazaOpenHelper(getActivity());
+        db = helper.getReadableDatabase();
+
+        // Dohvatanje kategorija iz baze
+        kategorije = new ArrayList<>();
+        String query = "select * from " + helper.TABLE_KATEGORIJA;
+        Cursor cursor = db.rawQuery(query, null);
+
+        while(cursor.moveToNext()) {
+            kategorije.add(cursor.getString(cursor.getColumnIndex(BazaOpenHelper.COLUMN_NAZIV)));
+        }
+
         ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, kategorije);
         spinnerKategorije.setAdapter(adapterKategorije);
 
@@ -181,10 +195,12 @@ public class FragmentOnline extends android.app.Fragment implements
 
     public void dodajKnjigu() {
         Biblioteka b = Biblioteka.getBiblioteku();
-        if(b.getKategorije().isEmpty()) {
+
+        if(kategorije.isEmpty()) {
             Toast.makeText(getActivity(), getString(R.string.kategorijePrazne), Toast.LENGTH_SHORT).show();
             return;
         }
+
         int i = spinnerRezultat.getSelectedItemPosition();
         Knjiga k = new Knjiga();
         k.setId(knjigeRezultat.get(i).getId());
@@ -196,8 +212,26 @@ public class FragmentOnline extends android.app.Fragment implements
         k.setBrojStranica(knjigeRezultat.get(i).getBrojStranica());
         k.setKategorija(spinnerKategorije.getSelectedItem().toString());
         k.setNacinDodavanja("online");
-        b.dodajKnjigu(k);
-        Toast.makeText(getActivity(), getString(R.string.dodanaNovaKnjiga), Toast.LENGTH_SHORT).show();
-        editTextUnos.setText("");
+
+        // Dohvatanje id kategorije iz baze
+        int idKategorije;
+        String query = "select * from " + helper.TABLE_KATEGORIJA + " where " + helper.COLUMN_NAZIV +
+                " = \"" + k.getKategorija() + "\"";
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()) {
+            idKategorije = cursor.getInt(cursor.getColumnIndex(helper.COLUMN_ID));
+            k.setKategorijaId(idKategorije);
+            b.dodajKnjigu(k);
+        }
+
+        long id = helper.dodajKnjigu(k);
+        if(id == -1) {
+            Toast.makeText(getActivity(), getString(R.string.knjigaPostoji), Toast.LENGTH_SHORT).show();
+            editTextUnos.setText("");
+        }
+        else {
+            Toast.makeText(getActivity(), getString(R.string.dodanaNovaKnjiga), Toast.LENGTH_SHORT).show();
+            editTextUnos.setText("");
+        }
     }
 }

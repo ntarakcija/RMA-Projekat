@@ -5,7 +5,10 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentManagerNonConfig;
 import android.app.FragmentTransaction;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -39,6 +42,9 @@ public class ListeFragment extends android.app.Fragment {
     ArrayList<String> kat;
     Boolean kategorijeAutori = true;
 
+    BazaOpenHelper helper;
+    SQLiteDatabase db;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_liste, container, false);
@@ -48,6 +54,9 @@ public class ListeFragment extends android.app.Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        helper = new BazaOpenHelper(getActivity());
+        db = helper.getReadableDatabase();
 
         tekstPretraga = (EditText) getView().findViewById(R.id.tekstPretraga);
         buttonPretraga = (Button) getView().findViewById(R.id.dPretraga);
@@ -141,11 +150,6 @@ public class ListeFragment extends android.app.Fragment {
     public void onResume() {
         super.onResume();
         if(kategorijeAutori) {
-            //Biblioteka b = Biblioteka.getBiblioteku();
-            //ArrayList<String> kategorije = b.getKategorije();
-            //adapterKategorije = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, kategorije);
-            //listLista.setAdapter(adapterKategorije);
-            //kategorijeAutori = true;
             prikaziKategorije();
         }
         else {
@@ -154,10 +158,24 @@ public class ListeFragment extends android.app.Fragment {
     }
 
     public void prikaziKategorije() {
+        /*
         Biblioteka b = Biblioteka.getBiblioteku();
         ArrayList<String> kategorije = b.getKategorije();
         adapterKategorije = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, kategorije);
         listLista.setAdapter(adapterKategorije);
+        */
+
+        ArrayList<String> kategorije = new ArrayList<>();
+        String query = "select * from " + helper.TABLE_KATEGORIJA;
+        Cursor cursor = db.rawQuery(query, null);
+
+        while(cursor.moveToNext()) {
+            kategorije.add(cursor.getString(cursor.getColumnIndex(BazaOpenHelper.COLUMN_NAZIV)));
+        }
+
+        adapterKategorije = new KategorijaAdapter(getActivity(), R.layout.kategorija, kategorije);
+        listLista.setAdapter(adapterKategorije);
+
         tekstPretraga.setVisibility(View.VISIBLE);
         buttonPretraga.setVisibility(View.VISIBLE);
         buttonDodajKategoriju.setVisibility(View.VISIBLE);
@@ -192,7 +210,10 @@ public class ListeFragment extends android.app.Fragment {
             prikaz.add(sviAutori.get(i) + "\n" + "Broj knjiga: " + Integer.toString(brojKnjiga.get(i)));
         }
 
-        ArrayAdapter<String> adapterAutori = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, prikaz);
+        //ArrayAdapter<String> adapterAutori = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, prikaz);
+        //listLista.setAdapter(adapterAutori);
+
+        ArrayAdapter<String> adapterAutori = new KategorijaAdapter(getActivity(), R.layout.kategorija, prikaz);
         listLista.setAdapter(adapterAutori);
 
         tekstPretraga.setVisibility(View.GONE);
@@ -206,9 +227,6 @@ public class ListeFragment extends android.app.Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         DodavanjeKnjigeFragment dodavanjeKnjigeF = new DodavanjeKnjigeFragment();
-        //Bundle bundle = new Bundle();
-        //bundle.putStringArrayList("kategorije", kat);
-        //dodavanjeKnjigeF.setArguments(bundle);
 
         fragmentTransaction.replace(R.id.fragment, dodavanjeKnjigeF);
         fragmentTransaction.addToBackStack(null);
@@ -250,6 +268,21 @@ public class ListeFragment extends android.app.Fragment {
     }
 
     public void dodajKategoriju() {
+        if(tekstPretraga.getText().toString().isEmpty()) {
+            Toast.makeText(getActivity(), getString(R.string.praznaKategorija), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            long id = helper.dodajKategoriju(tekstPretraga.getText().toString());
+            if(id == -1) {
+                Toast.makeText(getActivity(), getString(R.string.kategorijaPostoji), Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(getActivity(), getString(R.string.kategorijaDodana), Toast.LENGTH_SHORT).show();
+                prikaziKategorije();
+            }
+        }
+
+        /*
         Biblioteka b = Biblioteka.getBiblioteku();
         ArrayList<String> kategorije = b.getKategorije();
         if(!kategorije.contains(tekstPretraga.getText().toString())) {
@@ -261,5 +294,7 @@ public class ListeFragment extends android.app.Fragment {
         }
         else
             Toast.makeText(getActivity(), getString(R.string.kategorijaPostoji), Toast.LENGTH_SHORT).show();
+        */
     }
+
 }

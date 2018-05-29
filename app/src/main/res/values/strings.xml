@@ -27,4 +27,12 @@
     <string name="kategorijePrazne">Ne postoji nijedna kategorija.</string>
     <string name="unesiKategoriju">Unesi kategoriju</string>
     <string name="pretrazi">knjiga, autor, korisnik</string>
+    <string name="datumObjavljivanja">Datum objavljivanja: </string>
+    <string name="brojStranica">Broj stranica: </string>
+    <string name="opis">Opis: </string>
+    <string name="prosiri">PROŠIRI</string>
+    <string name="preporuci">Preporuči</string>
+    <string name="posalji">Pošalji</string>
+    <string name="praznaKategorija">Ne možete dodati praznu kategoriju.</string>
+    <string name="knjigaPostoji">Knjiga već postoji.</string>
 </resources>

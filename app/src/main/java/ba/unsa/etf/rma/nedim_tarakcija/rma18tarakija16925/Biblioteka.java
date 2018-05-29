@@ -25,7 +25,7 @@ public class Biblioteka {
     }
 
     public void dodajKnjigu(String imeAutora, String nazivKnjige, String kategorija, Uri lokacijaSlike) {
-        knjige.add(new Knjiga(imeAutora, nazivKnjige, kategorija, lokacijaSlike));
+        knjige.add(new Knjiga(kategorija, lokacijaSlike));
     }
 
     public void dodajKnjigu(Knjiga knjiga) {

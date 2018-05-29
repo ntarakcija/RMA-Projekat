@@ -16,6 +16,9 @@ public class Knjiga implements Parcelable {
     private String datumObjavljivanja;
     private URL slika;
     private int brojStranica;
+    String kategorija;
+    Uri lokacijaSlike;
+    Integer kategorijaId;
 
     private String nacinDodavanja;
 
@@ -41,6 +44,11 @@ public class Knjiga implements Parcelable {
 
     public Knjiga(String naziv) {
         this.naziv = naziv;
+    }
+
+    Knjiga(String kategorija, Uri lokacijaSlike) {
+        this.kategorija = kategorija;
+        this.lokacijaSlike = lokacijaSlike;
     }
 
     public Knjiga() {}
@@ -101,33 +109,6 @@ public class Knjiga implements Parcelable {
         return this.nacinDodavanja;
     }
 
-    // Stari atributi i metode
-    String imeAutora;
-    String nazivKnjige;
-    String kategorija;
-    Uri lokacijaSlike;
-
-    public Knjiga(String imeAutora, String nazivKnjige, String kategorija, Uri lokacijaSlike) {
-        this.imeAutora = imeAutora;
-        this.nazivKnjige = nazivKnjige;
-        this.kategorija = kategorija;
-        this.lokacijaSlike = lokacijaSlike;
-    }
-
-    public String getImeAutora() {
-        return imeAutora;
-    }
-    public void setImeAutora(String imeAutora) {
-        this.imeAutora = imeAutora;
-    }
-
-    public String getNazivKnjige() {
-        return nazivKnjige;
-    }
-    public void setNazivKnjige(String nazivKnjige) {
-        this.nazivKnjige = nazivKnjige;
-    }
-
     public String getKategorija() {
         return kategorija;
     }
@@ -140,10 +121,14 @@ public class Knjiga implements Parcelable {
         this.lokacijaSlike = lokacijaSlike;
     }
 
+    public int getKategorijaId() {
+        return kategorijaId;
+    }
+    public void setKategorijaId(int kategorijaId) {
+        this.kategorijaId = kategorijaId;
+    }
 
     protected Knjiga(Parcel in) {
-        imeAutora = in.readString();
-        nazivKnjige = in.readString();
         kategorija = in.readString();
         lokacijaSlike = in.readParcelable(Uri.class.getClassLoader());
     }
@@ -167,8 +152,6 @@ public class Knjiga implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(imeAutora);
-        dest.writeString(nazivKnjige);
         dest.writeString(kategorija);
         dest.writeParcelable(lokacijaSlike, flags);
     }

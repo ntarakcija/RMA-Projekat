@@ -4,6 +4,8 @@
     package="ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
 
     <application
         android:allowBackup="true"

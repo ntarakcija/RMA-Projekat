@@ -27,4 +27,12 @@
     <string name="kategorijePrazne">Categories are empty.</string>
     <string name="unesiKategoriju">Enter category</string>
     <string name="pretrazi">book, author, user</string>
+    <string name="datumObjavljivanja">Published date: </string>
+    <string name="brojStranica">Page count: </string>
+    <string name="opis">Description: </string>
+    <string name="prosiri">EXPAND</string>
+    <string name="preporuci">Recomend</string>
+    <string name="posalji">Send</string>
+    <string name="praznaKategorija">You can\'t add an empty category.</string>
+    <string name="knjigaPostoji">The book already exists.</string>
 </resources>

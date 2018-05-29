@@ -13,18 +13,25 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class KnjigeFragment extends android.app.Fragment {
     Button buttonPovratak;
+    TextView prosiri;
+    Button buttonPreporuci;
+    ListAdapter adapterKnjige;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_knjige, container, false);
 
         buttonPovratak = (Button) v.findViewById(R.id.dPovratak);
+        //prosiri = (TextView) v.findViewById(R.id.eProsiri);
 
         Biblioteka biblioteka = Biblioteka.getBiblioteku();
         ArrayList<Knjiga> knjige = biblioteka.getKnjige();
@@ -46,7 +53,7 @@ public class KnjigeFragment extends android.app.Fragment {
         }
 
         ListView listaKnjiga = (ListView) v.findViewById(R.id.listaKnjiga);
-        ListAdapter adapterKnjige = new KnjigaAdapter(getActivity(), R.layout.knjiga, filtriraneKnjige);
+        adapterKnjige = new KnjigaAdapter(getActivity(), R.layout.knjiga, filtriraneKnjige);
         listaKnjiga.setAdapter(adapterKnjige);
 
         buttonPovratak.setOnClickListener(new View.OnClickListener() {
