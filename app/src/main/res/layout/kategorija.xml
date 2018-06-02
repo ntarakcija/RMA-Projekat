@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/kategorija"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:hint="@string/posalji"
-            android:gravity="center"
-            android:padding="5dp"/>
-
-    </LinearLayout>
-
-</android.support.constraint.ConstraintLayout>
+<TextView android:id="@+id/kategorija"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/colorWhite"
+    android:gravity="center"
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

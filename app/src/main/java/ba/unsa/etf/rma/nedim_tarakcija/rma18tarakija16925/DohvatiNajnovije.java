@@ -44,8 +44,9 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
         }
 
         String link​ = "https://www.googleapis.com/books/v1/volumes?q=inauthor:";
-        String rezCount = "";
-        String url1 = link​ + query + rezCount;
+        String rezCount = "&maxResults=40";
+        String orderBy = "&orderBy=newest";
+        String url1 = link​ + query + rezCount + orderBy;
 
         ArrayList<Knjiga> sveKnjige = new ArrayList<Knjiga>();
         ArrayList<String> datumi = new ArrayList<String>();
@@ -101,46 +102,11 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
                 // broj stranica
                 int brojStranica = volumeInfo.optInt("pageCount");
 
-            /*
-            JSONObject jo = new JSONObject(rezultat);
-            JSONArray items = jo.getJSONArray("items");
-
-            for (int j = 0; j < items.length(); j++) {
-                JSONObject knjiga = items.getJSONObject(j);
-                JSONObject volumeInfo = knjiga.getJSONObject("volumeInfo");
-                JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
-
-                // id
-                String id = knjiga.getString("id");
-
-                // naziv
-                String naziv = volumeInfo.getString("title");
-
-                // autori
-                JSONArray autoriJSON = volumeInfo.getJSONArray("authors");
-                ArrayList<Autor> autori = new ArrayList<Autor>();
-                for(int k = 0; k < autoriJSON.length(); k++)
-                    autori.add(new Autor((String) autoriJSON.get(k), id));
-
-                // opis
-                String opis = volumeInfo.getString("description");
-
-                // datum objavljivanja
-                String datumObjavljivanja = volumeInfo.getString("publishedDate");
-
-                // slika
-                URL slika = new URL(imageLinks.getString("thumbnail"));
-
-                // broj stranica
-                int brojStranica = Integer.parseInt(volumeInfo.getString("pageCount"));
-
-                */
-
                 // Odabir knjiga samo od datog autora
                 Knjiga novaKnjiga = new Knjiga(id, naziv, autori, opis, datumObjavljivanja, slika, brojStranica);
                 //for(int k = 0; k < novaKnjiga.getAutori().size(); k++)
                     //if(novaKnjiga.getAutori().get(k).getImeiPrezime().equals(params[0]))
-                        sveKnjige.add(novaKnjiga);
+                sveKnjige.add(novaKnjiga);
             }
 
         } catch (MalformedURLException e) {
@@ -151,6 +117,8 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
             e.printStackTrace();
         }
 
+        /*
+        // Sortiranje po datumu
         Collections.sort(sveKnjige, new Comparator<Knjiga>() {
             @Override
             public int compare(Knjiga k1, Knjiga k2) {
@@ -159,6 +127,7 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
                 return k1.getDatumObjavljivanja().compareTo(k2.getDatumObjavljivanja()) * -1;
             }
         });
+        */
 
         for(int i = 0; i < 5; i++) {
             if(i >= sveKnjige.size()) break;

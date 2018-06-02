@@ -24,7 +24,7 @@
     <string name="kategorijaDodana">New category added.</string>
     <string name="webServisPokrenut">Web service started.</string>
     <string name="webServisGreska">Error.</string>
-    <string name="kategorijePrazne">Categories are empty.</string>
+    <string name="kategorijePrazne">There is no categories.</string>
     <string name="unesiKategoriju">Enter category</string>
     <string name="pretrazi">book, author, user</string>
     <string name="datumObjavljivanja">Published date: </string>
@@ -35,4 +35,5 @@
     <string name="posalji">Send</string>
     <string name="praznaKategorija">You can\'t add an empty category.</string>
     <string name="knjigaPostoji">The book already exists.</string>
+    <string name="knjigePrazne">There is no books.</string>
 </resources>

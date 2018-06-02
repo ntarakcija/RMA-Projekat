@@ -55,11 +55,12 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
             Button buttonPreporuci = (Button) v.findViewById(R.id.dPreporuci);
 
             if (imgViewNaslovna != null) {
-                if(knjiga.getNacinDodavanja().equals("ofline"))
-                    imgViewNaslovna.setImageURI(knjiga.getLokacijaSlike());
-                else {
+                //if(knjiga.getNacinDodavanja().equals("ofline"))
+                  //  imgViewNaslovna.setImageURI(knjiga.getLokacijaSlike());
+                //else {
+                if(knjiga.getSlika() != null)
                     Picasso.get().load(knjiga.getSlika().toString()).into(imgViewNaslovna);
-                }
+                //}
             }
 
             if (textNazivKnjige != null) {

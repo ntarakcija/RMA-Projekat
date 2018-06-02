@@ -56,7 +56,10 @@ public class FragmentOnline extends android.app.Fragment implements
             kategorije.add(cursor.getString(cursor.getColumnIndex(BazaOpenHelper.COLUMN_NAZIV)));
         }
 
-        ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, kategorije);
+        //ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, kategorije);
+        //spinnerKategorije.setAdapter(adapterKategorije);
+
+        KategorijaAdapter adapterKategorije = new KategorijaAdapter(getActivity(), R.layout.kategorija, kategorije);
         spinnerKategorije.setAdapter(adapterKategorije);
 
         buttonPretraga.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +91,10 @@ public class FragmentOnline extends android.app.Fragment implements
             for (int i = 0; i < knjige.size(); i++)
                 naziviKnjiga.add(knjige.get(i).getNaziv());
 
-            ArrayAdapter<String> adapterRezultat = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, naziviKnjiga);
+            //ArrayAdapter<String> adapterRezultat = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, naziviKnjiga);
+            //spinnerRezultat.setAdapter(adapterRezultat);
+
+            KategorijaAdapter adapterRezultat = new KategorijaAdapter(getActivity(), R.layout.kategorija, naziviKnjiga);
             spinnerRezultat.setAdapter(adapterRezultat);
         }
         else {
@@ -198,6 +204,11 @@ public class FragmentOnline extends android.app.Fragment implements
 
         if(kategorije.isEmpty()) {
             Toast.makeText(getActivity(), getString(R.string.kategorijePrazne), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(knjigeRezultat.isEmpty()) {
+            Toast.makeText(getActivity(), getString(R.string.knjigePrazne), Toast.LENGTH_SHORT).show();
             return;
         }
 

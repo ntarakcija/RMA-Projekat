@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentOnline">
+    tools:context=".FragmentOnline"
+    android:background="@drawable/home"
+    android:clickable="true">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/home"
         android:padding="5dp">
 
         <LinearLayout
@@ -64,8 +65,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/colorWhite"
-                android:foregroundTint="@color/colorWhite">
+                android:popupBackground="@color/colorBlack">
             </Spinner>
 
             <Spinner
@@ -73,8 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/colorWhite"
-                android:foregroundTint="@color/colorWhite">
+                android:popupBackground="@color/colorBlack">
             </Spinner>
 
         </LinearLayout>

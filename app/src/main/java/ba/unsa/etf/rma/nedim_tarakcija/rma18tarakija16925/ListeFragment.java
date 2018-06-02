@@ -28,6 +28,13 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.util.function.BinaryOperator;
 
+import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.COLUMN_ID;
+import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.COLUMN_ID_AUTORA;
+import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.COLUMN_IME;
+import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.TABLE_AUTOR;
+import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.TABLE_AUTORSTVO;
+import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.TABLE_KNJIGA;
+
 public class ListeFragment extends android.app.Fragment {
 
     EditText tekstPretraga;
@@ -41,6 +48,8 @@ public class ListeFragment extends android.app.Fragment {
     Button buttonDodajOnline;
     ArrayList<String> kat;
     Boolean kategorijeAutori = true;
+    // Čuva id-eve svih autora i šaljse id na poziciji klika na listu
+    ArrayList<Integer> autoriId;
 
     BazaOpenHelper helper;
     SQLiteDatabase db;
@@ -158,12 +167,6 @@ public class ListeFragment extends android.app.Fragment {
     }
 
     public void prikaziKategorije() {
-        /*
-        Biblioteka b = Biblioteka.getBiblioteku();
-        ArrayList<String> kategorije = b.getKategorije();
-        adapterKategorije = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, kategorije);
-        listLista.setAdapter(adapterKategorije);
-        */
 
         ArrayList<String> kategorije = new ArrayList<>();
         String query = "select * from " + helper.TABLE_KATEGORIJA;
@@ -183,37 +186,29 @@ public class ListeFragment extends android.app.Fragment {
     }
 
     public void prikaziAutore() {
-        Biblioteka b = Biblioteka.getBiblioteku();
-        ArrayList<Knjiga> knjige = b.getKnjige();
-        ArrayList<String> sviAutori = new ArrayList<>();
-        ArrayList<String> prikaz = new ArrayList<>();
+        ArrayList<String> autori = new ArrayList<>();
+        autoriId = new ArrayList<>();
 
-        for(int i = 0; i < knjige.size(); i++) {
-            ArrayList<Autor> autori = knjige.get(i).getAutori();
-            for(int j = 0; j < autori.size(); j++) {
-                if(!sviAutori.contains(autori.get(j).getImeiPrezime()))
-                    sviAutori.add(autori.get(j).getImeiPrezime());
-            }
+        // Uzimanje svih autora iz baze
+        String queryAutori = "select * from " + TABLE_AUTOR;
+        Cursor cursorAutori = db.rawQuery(queryAutori, null);
+
+        while(cursorAutori.moveToNext()) {
+            String prikaz;
+            prikaz = cursorAutori.getString(cursorAutori.getColumnIndex(COLUMN_IME));
+            prikaz += "\nBroj knjiga: ";
+            autoriId.add(cursorAutori.getInt(cursorAutori.getColumnIndex(COLUMN_ID)));
+
+            // Prebrojavanje knjiga koje je napisao svaki autor
+            String queryAutorstvo = "select * from " + TABLE_AUTORSTVO + " where " + COLUMN_ID_AUTORA + " = \"" +
+                    cursorAutori.getInt(cursorAutori.getColumnIndex(COLUMN_ID)) + "\"";
+            Cursor cursorAutorstvo = db.rawQuery(queryAutorstvo, null);
+
+            prikaz += cursorAutorstvo.getCount();
+            autori.add(prikaz);
         }
 
-        ArrayList<Integer> brojKnjiga = new ArrayList<>();
-        for(int i = 0; i < sviAutori.size(); i++) {
-            int brojac = 0;
-            for(int j = 0; j < knjige.size(); j++)
-                for(int k = 0; k < knjige.get(j).getAutori().size(); k++)
-                    if(knjige.get(j).getAutori().get(k).getImeiPrezime().equals(sviAutori.get(i)))
-                        brojac++;
-            brojKnjiga.add(brojac);
-        }
-
-        for(int i = 0; i < sviAutori.size(); i++) {
-            prikaz.add(sviAutori.get(i) + "\n" + "Broj knjiga: " + Integer.toString(brojKnjiga.get(i)));
-        }
-
-        //ArrayAdapter<String> adapterAutori = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, prikaz);
-        //listLista.setAdapter(adapterAutori);
-
-        ArrayAdapter<String> adapterAutori = new KategorijaAdapter(getActivity(), R.layout.kategorija, prikaz);
+        ArrayAdapter<String> adapterAutori = new KategorijaAdapter(getActivity(), R.layout.kategorija, autori);
         listLista.setAdapter(adapterAutori);
 
         tekstPretraga.setVisibility(View.GONE);
@@ -246,7 +241,7 @@ public class ListeFragment extends android.app.Fragment {
             knjigeF.setArguments(bundle);
         }
         else {
-            bundle.putString("autor", listLista.getItemAtPosition(position).toString());
+            bundle.putInt("autor", autoriId.get(position));
             bundle.putBoolean("kategorijeAutori", kategorijeAutori);
             knjigeF.setArguments(bundle);
         }

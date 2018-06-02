@@ -15,6 +15,8 @@ public class Autor {
         knjige.add(id);
     }
 
+    Autor() {}
+
     Autor(String imeiPrezime) {
         this.imeiPrezime = imeiPrezime;
     }

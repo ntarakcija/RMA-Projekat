@@ -35,4 +35,5 @@
     <string name="posalji">Pošalji</string>
     <string name="praznaKategorija">Ne možete dodati praznu kategoriju.</string>
     <string name="knjigaPostoji">Knjiga već postoji.</string>
+    <string name="knjigePrazne">Ne postoji nijedna knjiga.</string>
 </resources>
