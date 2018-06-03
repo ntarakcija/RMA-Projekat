@@ -15,6 +15,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,12 +69,14 @@ public class FragmentPreporuci extends android.app.Fragment {
         opis.setText(getArguments().getString("opis"));
         Picasso.get().load(getArguments().getString("slika")).into(slika);
 
+        opis.setMovementMethod(new ScrollingMovementMethod());
+
         emailovi = new ArrayList<>();
         imena = new ArrayList<>();
 
         ucitajEmailove();
 
-        ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, emailovi);
+        ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), R.layout.kategorija, emailovi);
         spinnerKontakti.setAdapter(adapterKategorije);
 
         buttonPosalji.setOnClickListener(new View.OnClickListener() {

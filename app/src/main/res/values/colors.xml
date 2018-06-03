@@ -10,6 +10,8 @@
     <color name="colorDarkYellow">#FFC300</color>
     <color name="colorBlue">#6699ff</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorDarkBlue">#040717</color>
+    <color name="colorLightBlack">#1C2326</color>
 
     <color name="royalBlue">#111E6C</color>
     <color name="egyptianBlue">#1034A6</color>
@@ -17,4 +19,5 @@
     <color name="sapphireBlue">#0F52BA</color>
     <color name="azureBlue">#0080FF</color>
     <color name="colorBlack">#1a1a1b</color>
+    <color name="colorBlue2">#26427e</color>
 </resources>

@@ -1,6 +1,7 @@
 package ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925;
 
 
+import android.Manifest;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentManagerNonConfig;
@@ -12,6 +13,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -57,6 +59,7 @@ public class ListeFragment extends android.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_liste, container, false);
+        getActivity().getWindow().setBackgroundDrawableResource(R.drawable.home);
         return v;
     }
 

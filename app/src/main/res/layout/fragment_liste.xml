@@ -22,7 +22,8 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical">
 
                 <EditText
                     android:id="@+id/tekstPretraga"
@@ -35,22 +36,13 @@
                     android:ems="10"
                     android:hint="@string/unesiKategoriju"
                     android:inputType="textPersonName"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="@color/colorWhite"
-                    android:textColorHighlight="@color/colorWhite"
-                    android:backgroundTint="@color/colorWhite"/>
-
-                <Button
-                    android:id="@+id/dPretraga"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:width="50dp"
-                    android:text="@string/pretraga"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:textColor="@color/colorBlue2"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:textColorHighlight="@color/colorBlue2"
                     android:background="@drawable/round_button_outline"
-                    android:textColor="@color/colorWhite"/>
+                    android:paddingLeft="10dp"
+                    android:textSize="14dp"/>
 
             </LinearLayout>
 
@@ -60,30 +52,73 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical">
 
+                <Button
+                    android:id="@+id/dPretraga"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/invisible_button"
+                    android:drawableTint="@color/colorBlue2"
+                    android:drawableTop="@drawable/search_icon"
+                    android:text="@string/pretraga"
+                    android:textColor="@color/colorBlue2"
+                    android:textSize="11dp"/>
 
                 <Button
                     android:id="@+id/dDodajKategoriju"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_weight="0.5"
+                    android:textColor="@color/colorBlue2"
+                    android:background="@drawable/invisible_button"
                     android:text="@string/dodajKategoriju"
-                    android:background="@drawable/round_button_outline"
-                    android:textColor="@color/colorWhite"/>
+                    android:drawableTop="@drawable/add_icon"
+                    android:drawableTint="@color/colorBlue2"
+                    android:textSize="11dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:weightSum="1">
 
                 <Button
                     android:id="@+id/dDodajKnjigu"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_weight="0.5"
+                    android:textColor="@color/colorBlue2"
+                    android:background="@drawable/invisible_button"
                     android:text="@string/dodajKnjigu"
-                    android:background="@drawable/round_button_outline"
-                    android:textColor="@color/colorWhite"/>
+                    android:drawableTop="@drawable/book_icon"
+                    android:drawableTint="@color/colorBlue2"
+                    android:textSize="11dp"/>
+
+                <Button
+                    android:id="@+id/dDodajOnline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:textColor="@color/colorBlue2"
+                    android:background="@drawable/invisible_button"
+                    android:text="@string/dodajOnline"
+                    android:drawableTop="@drawable/online_icon"
+                    android:drawableTint="@color/colorBlue2"
+                    android:textSize="11dp"/>
 
             </LinearLayout>
 
@@ -99,45 +134,30 @@
                 <Button
                     android:id="@+id/dKategorije"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlue2"
+                    android:background="@drawable/invisible_button"
                     android:text="@string/kategorije"
-                    android:background="@drawable/round_button_outline"
-                    android:textColor="@color/colorWhite"/>
+                    android:drawableTop="@drawable/category_icon"
+                    android:drawableTint="@color/colorBlue2"
+                    android:textSize="11dp"/>
 
                 <Button
                     android:id="@+id/dAutori"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlue2"
+                    android:background="@drawable/invisible_button"
                     android:text="@string/autori"
-                    android:background="@drawable/round_button_outline"
-                    android:textColor="@color/colorWhite"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:weightSum="1">
-
-                <Button
-                    android:id="@+id/dDodajOnline"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.5"
-                    android:text="@string/dodajOnline"
-                    android:background="@drawable/round_button_outline"
-                    android:textColor="@color/colorWhite"/>
+                    android:drawableTop="@drawable/author_icon"
+                    android:drawableTint="@color/colorBlue2"
+                    android:textSize="11dp"/>
 
             </LinearLayout>
 
@@ -153,9 +173,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:backgroundTint="@color/colorWhite"
-                    android:divider="@color/colorWhite"
-                    android:dividerHeight="0.5dp"
+                    android:backgroundTint="@color/colorBlue"
+                    android:divider="@color/colorBlue2"
+                    android:dividerHeight="1dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"/>
             </LinearLayout>

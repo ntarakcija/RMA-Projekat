@@ -1,16 +1,19 @@
 package ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925;
 
+import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -29,6 +32,7 @@ public class KnjigeFragment extends android.app.Fragment {
     ListAdapter adapterKnjige;
     BazaOpenHelper helper;
     SQLiteDatabase db;
+    ListView listaKnjiga;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class KnjigeFragment extends android.app.Fragment {
         buttonPovratak = (Button) v.findViewById(R.id.dPovratak);
         helper = new BazaOpenHelper(getActivity());
         db = helper.getReadableDatabase();
+        listaKnjiga = (ListView) v.findViewById(R.id.listaKnjiga);
         //prosiri = (TextView) v.findViewById(R.id.eProsiri);
 
         // Dohvatanje id kategorije iz baze
@@ -60,7 +65,6 @@ public class KnjigeFragment extends android.app.Fragment {
         }
 
         if(!filtriraneKnjige.isEmpty()) {
-            ListView listaKnjiga = (ListView) v.findViewById(R.id.listaKnjiga);
             adapterKnjige = new KnjigaAdapter(getActivity(), R.layout.knjiga, filtriraneKnjige);
             listaKnjiga.setAdapter(adapterKnjige);
         }
@@ -69,6 +73,15 @@ public class KnjigeFragment extends android.app.Fragment {
             @Override
             public void onClick(View v) {
                 povratak();
+            }
+        });
+
+        listaKnjiga.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(), "fdfd", Toast.LENGTH_SHORT).show();
+                listaKnjiga.setBackgroundColor(R.color.colorAccent);
             }
         });
 

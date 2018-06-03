@@ -4,22 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorLightGray"
     android:layout_height="match_parent"
     android:clickable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:descendantFocusability="blocksDescendants"
-            android:orientation="horizontal"
-            android:backgroundTint="@color/colorWhite">
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/eNaslovna"
@@ -133,12 +130,15 @@
             <Button
                 android:id="@+id/dPreporuci"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:text="@string/preporuci"
                 android:layout_margin="5dp"
-                android:background="@drawable/round_button"
-                android:textColor="@color/colorWhite"
+                android:background="@drawable/invisible_button"
+                android:drawableTint="@color/colorBlue2"
+                android:drawableTop="@drawable/recomend_icon"
+                android:textColor="@color/colorBlue2"
+                android:textSize="11dp"
                 />
 
         </LinearLayout>

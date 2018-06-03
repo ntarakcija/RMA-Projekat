@@ -25,15 +25,18 @@
     <string name="webServisPokrenut">Web service started.</string>
     <string name="webServisGreska">Error.</string>
     <string name="kategorijePrazne">There is no categories.</string>
-    <string name="unesiKategoriju">Enter category</string>
-    <string name="pretrazi">book, author, user</string>
+    <string name="unesiKategoriju"><font size="14">Search categories</font></string>
+    <string name="pretrazi"><font size="14">Search books, authors and users</font></string>
     <string name="datumObjavljivanja">Published date: </string>
     <string name="brojStranica">Page count: </string>
     <string name="opis">Description: </string>
     <string name="prosiri">EXPAND</string>
-    <string name="preporuci">Recomend</string>
+    <string name="preporuci">Recommend</string>
     <string name="posalji">Send</string>
     <string name="praznaKategorija">You can\'t add an empty category.</string>
     <string name="knjigaPostoji">The book already exists.</string>
     <string name="knjigePrazne">There is no books.</string>
+    <string name="permisijeNisuDodane">Necessary permissions are not granted.</string>
+    <string name="knjigeVelikaSlova">BOOKS:</string>
+    <string name="kategorijeVelikaSlova">CATEGORIES:</string>
 </resources>

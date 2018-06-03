@@ -6,33 +6,52 @@
     android:layout_height="match_parent"
     android:clickable="true">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/colorWhite"
-        android:padding="5dp">
+        android:background="@drawable/home"
+        android:padding="5dp"
+        android:weightSum="1">
 
-        <ListView
-            android:id="@+id/listaKnjiga"
+
+            <ListView
+                android:id="@+id/listaKnjiga"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/colorBlue"
+                android:divider="@color/colorBlue2"
+                android:dividerHeight="1dp"
+                android:gravity="center">
+
+            </ListView>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="455dp">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:weightSum="1"
+            android:gravity="right">
 
-        </ListView>
+            <Button
+                android:id="@+id/dPovratak"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/invisible_button"
+                android:drawableTint="@color/colorBlue2"
+                android:drawableTop="@drawable/back_icon"
+                android:text="@string/povratak"
+                android:textColor="@color/colorBlue2"
+                android:textSize="11dp"
+                />
 
-        <Button
-            android:id="@+id/dPovratak"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorBlue"
-            android:text="@string/povratak"
-            android:textColor="@color/colorWhite"
-            android:layout_below="@+id/listaKnjiga"
+        </LinearLayout>
 
-            />
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

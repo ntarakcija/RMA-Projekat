@@ -1,15 +1,19 @@
 package ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -96,43 +101,41 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
             buttonPreporuci.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final Context context = parent.getContext();
-                    FragmentManager fragmentManager = ((Activity) context).getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                    FragmentPreporuci preporuciF = new FragmentPreporuci();
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("naziv", knjiga.getNaziv());
-
-                    String autori = knjiga.getAutori().get(0).getImeiPrezime();
-
-                    /*
-                    for(int i = 0; i < knjiga.getAutori().size(); i++) {
-                        autori = autori + knjiga.getAutori().get(i).getImeiPrezime();
-                        if(i == knjiga.getAutori().size() - 1) break;
-                        else autori = autori + ", ";
+                    if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_CONTACTS)
+                            != PackageManager.PERMISSION_GRANTED ||
+                            ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                                    != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions((Activity) v.getContext(), new String[]
+                                {Manifest.permission.READ_CONTACTS, Manifest.permission.READ_EXTERNAL_STORAGE},1);
                     }
-                    */
+                    else {
+                        final Context context = parent.getContext();
+                        FragmentManager fragmentManager = ((Activity) context).getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                    bundle.putString("autori", autori);
-                    bundle.putString("slika", knjiga.getSlika().toString());
-                    bundle.putString("datum objavljivanja", knjiga.getDatumObjavljivanja());
-                    bundle.putString("broj stranica", Integer.toString(knjiga.getBrojStranica()));
-                    bundle.putString("opis", knjiga.getOpis());
+                        FragmentPreporuci preporuciF = new FragmentPreporuci();
+                        Bundle bundle = new Bundle();
 
-                    preporuciF.setArguments(bundle);
+                        bundle.putString("naziv", knjiga.getNaziv());
 
-                    fragmentTransaction.replace(R.id.fragment, preporuciF);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                        String autori = knjiga.getAutori().get(0).getImeiPrezime();
+
+                        bundle.putString("autori", autori);
+                        bundle.putString("slika", knjiga.getSlika().toString());
+                        bundle.putString("datum objavljivanja", knjiga.getDatumObjavljivanja());
+                        bundle.putString("broj stranica", Integer.toString(knjiga.getBrojStranica()));
+                        bundle.putString("opis", knjiga.getOpis());
+
+                        preporuciF.setArguments(bundle);
+
+                        fragmentTransaction.replace(R.id.fragment, preporuciF);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }
                 }
             });
         }
 
-
-
         return v;
     }
-
 }

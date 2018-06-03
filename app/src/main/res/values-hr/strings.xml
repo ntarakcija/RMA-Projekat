@@ -25,8 +25,8 @@
     <string name="webServisPokrenut">Web servis pokrenut.</string>
     <string name="webServisGreska">Desila se greška.</string>
     <string name="kategorijePrazne">Ne postoji nijedna kategorija.</string>
-    <string name="unesiKategoriju">Unesi kategoriju</string>
-    <string name="pretrazi">knjiga, autor, korisnik</string>
+    <string name="unesiKategoriju"><font size="14">Pretraži kategorije</font></string>
+    <string name="pretrazi"><font size="14">Pretraži knjige, autore i korisnike</font></string>
     <string name="datumObjavljivanja">Datum objavljivanja: </string>
     <string name="brojStranica">Broj stranica: </string>
     <string name="opis">Opis: </string>
@@ -36,4 +36,9 @@
     <string name="praznaKategorija">Ne možete dodati praznu kategoriju.</string>
     <string name="knjigaPostoji">Knjiga već postoji.</string>
     <string name="knjigePrazne">Ne postoji nijedna knjiga.</string>
+    <string name="permisijaKontaktiOdbijena">Permisija za čitanje kontakata odbijena.</string>
+    <string name="permisijaStorrageOdbijena">Permisija za pristup memoriji uređaja odbijena.</string>
+    <string name="permisijeNisuDodane">Nisu dodane sve potrebnepermisije.</string>
+    <string name="knjigeVelikaSlova">KNJIGE:</string>
+    <string name="kategorijeVelikaSlova">KATEGORIJE:</string>
 </resources>

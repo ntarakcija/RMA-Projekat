@@ -114,7 +114,10 @@ public class FragmentOnline extends android.app.Fragment implements
             for (int i = 0; i < knjige.size(); i++)
                 naziviKnjiga.add(knjige.get(i).getNaziv());
 
-            ArrayAdapter<String> adapterRezultat = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, naziviKnjiga);
+            //ArrayAdapter<String> adapterRezultat = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, naziviKnjiga);
+            //spinnerRezultat.setAdapter(adapterRezultat);
+
+            KategorijaAdapter adapterRezultat = new KategorijaAdapter(getActivity(), R.layout.kategorija, naziviKnjiga);
             spinnerRezultat.setAdapter(adapterRezultat);
         }
         else {
@@ -141,7 +144,10 @@ public class FragmentOnline extends android.app.Fragment implements
                     for (int i = 0; i < knjige.size(); i++)
                         naziviKnjiga.add(knjige.get(i).getNaziv());
 
-                    ArrayAdapter<String> adapterRezultat = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, naziviKnjiga);
+                    //ArrayAdapter<String> adapterRezultat = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, naziviKnjiga);
+                    //spinnerRezultat.setAdapter(adapterRezultat);
+
+                    KategorijaAdapter adapterRezultat = new KategorijaAdapter(getActivity(), R.layout.kategorija, naziviKnjiga);
                     spinnerRezultat.setAdapter(adapterRezultat);
                 }
                 else {
