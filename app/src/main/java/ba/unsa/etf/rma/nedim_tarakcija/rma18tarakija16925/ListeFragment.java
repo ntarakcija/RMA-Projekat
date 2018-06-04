@@ -33,6 +33,7 @@ import java.util.function.BinaryOperator;
 import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.COLUMN_ID;
 import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.COLUMN_ID_AUTORA;
 import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.COLUMN_IME;
+import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.COLUMN_NAZIV;
 import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.TABLE_AUTOR;
 import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.TABLE_AUTORSTVO;
 import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.TABLE_KNJIGA;
@@ -78,6 +79,8 @@ public class ListeFragment extends android.app.Fragment {
         buttonAutori = (Button) getView().findViewById(R.id.dAutori);
         listLista = (ListView) getView().findViewById(R.id.listaKategorija);
         buttonDodajOnline = (Button) getView().findViewById(R.id.dDodajOnline);
+
+        buttonDodajKategoriju.setEnabled(false);
 
         if(kategorijeAutori) {
             Biblioteka b = Biblioteka.getBiblioteku();
@@ -142,7 +145,6 @@ public class ListeFragment extends android.app.Fragment {
             }
         });
 
-
         buttonDodajOnline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,6 +156,13 @@ public class ListeFragment extends android.app.Fragment {
             @Override
             public void onClick(View v) {
                 dodajKategoriju();
+            }
+        });
+
+        buttonPretraga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filtriraj();
             }
         });
     }
@@ -277,22 +286,27 @@ public class ListeFragment extends android.app.Fragment {
             else {
                 Toast.makeText(getActivity(), getString(R.string.kategorijaDodana), Toast.LENGTH_SHORT).show();
                 prikaziKategorije();
+                tekstPretraga.setText("");
+                buttonDodajKategoriju.setEnabled(false);
             }
         }
-
-        /*
-        Biblioteka b = Biblioteka.getBiblioteku();
-        ArrayList<String> kategorije = b.getKategorije();
-        if(!kategorije.contains(tekstPretraga.getText().toString())) {
-            b.dodajKategoriju(tekstPretraga.getText().toString());
-            adapterKategorije = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, kategorije);
-            listLista.setAdapter(adapterKategorije);
-            tekstPretraga.setText("");
-            Toast.makeText(getActivity(), getString(R.string.kategorijaDodana), Toast.LENGTH_SHORT).show();
-        }
-        else
-            Toast.makeText(getActivity(), getString(R.string.kategorijaPostoji), Toast.LENGTH_SHORT).show();
-        */
     }
 
+    public void filtriraj() {
+        ArrayList<String> kategorije = new ArrayList<>();
+        String query = "select * from " + helper.TABLE_KATEGORIJA + " where " + helper.COLUMN_NAZIV + " = \"" +
+                tekstPretraga.getText().toString() + "\"";;
+        Cursor cursor = db.rawQuery(query, null);
+
+        while(cursor.moveToNext()) {
+            kategorije.add(cursor.getString(cursor.getColumnIndex(BazaOpenHelper.COLUMN_NAZIV)));
+        }
+
+        adapterKategorije = new KategorijaAdapter(getActivity(), R.layout.kategorija, kategorije);
+        listLista.setAdapter(adapterKategorije);
+
+        if(cursor.getCount() == 0) {
+            buttonDodajKategoriju.setEnabled(true);
+        }
+    }
 }

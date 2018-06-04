@@ -36,7 +36,7 @@ public class KnjigeFragment extends android.app.Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_knjige, container, false);
+        final View v = inflater.inflate(R.layout.fragment_knjige, container, false);
 
         buttonPovratak = (Button) v.findViewById(R.id.dPovratak);
         helper = new BazaOpenHelper(getActivity());
@@ -80,8 +80,8 @@ public class KnjigeFragment extends android.app.Fragment {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "fdfd", Toast.LENGTH_SHORT).show();
-                listaKnjiga.setBackgroundColor(R.color.colorAccent);
+                helper.oznaciKnjigu((Knjiga) listaKnjiga.getItemAtPosition(position));
+                view.setBackgroundColor(view.getResources().getColor(R.color.lightBlue));
             }
         });
 

@@ -1,12 +1,14 @@
 package ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -20,7 +22,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +35,7 @@ import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
     public KnjigaAdapter(@NonNull Context context, int resource, ArrayList<Knjiga> knjige) {
@@ -58,6 +65,16 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
             TextView textBrojStranica = (TextView) v.findViewById(R.id.eBrojStranica);
             TextView textOpis = (TextView) v.findViewById(R.id.eOpis);
             Button buttonPreporuci = (Button) v.findViewById(R.id.dPreporuci);
+            LinearLayout pozadina = (LinearLayout) v.findViewById(R.id.layout);
+
+            if(pozadina != null) {
+                if(knjiga.getPregledana() == 1) {
+                    v.setBackgroundColor(v.getResources().getColor(R.color.lightBlue));
+                }
+                else {
+                    v.setBackgroundColor(Color.TRANSPARENT);
+                }
+            }
 
             if (imgViewNaslovna != null) {
                 //if(knjiga.getNacinDodavanja().equals("ofline"))
@@ -83,19 +100,15 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
             }
 
             if(textDatumObjavljivanja != null) {
-                // textDatumObjavljivanja.setText(getContext().getString(R.string.datumObjavljivanja) + " " + knjiga.getDatumObjavljivanja());
                 textDatumObjavljivanja.setText(knjiga.getDatumObjavljivanja());
             }
 
             if(textBrojStranica != null) {
-                // textBrojStranica.setText(getContext().getString(R.string.brojStranica) + " " + Integer.toString(knjiga.getBrojStranica()));
                 textBrojStranica.setText(Integer.toString(knjiga.getBrojStranica()));
             }
 
             if(textOpis != null) {
-                // textOpis.setText(getContext().getString(R.string.opis) + " " + knjiga.getOpis());
                 textOpis.setText(knjiga.getOpis());
-                textOpis.setMovementMethod(new ScrollingMovementMethod());
             }
 
             buttonPreporuci.setOnClickListener(new View.OnClickListener() {

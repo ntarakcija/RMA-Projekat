@@ -39,4 +39,6 @@
     <string name="permisijeNisuDodane">Necessary permissions are not granted.</string>
     <string name="knjigeVelikaSlova">BOOKS:</string>
     <string name="kategorijeVelikaSlova">CATEGORIES:</string>
+    <string name="procitana">READ</string>
+    <string name="obrisi">Delete</string>
 </resources>

@@ -155,6 +155,7 @@ public class BazaOpenHelper extends SQLiteOpenHelper {
                 knjiga.setKategorijaId(cursorKnjige.getInt(cursorKnjige.getColumnIndex(COLUMN_ID_KATEGORIJE)));
                 knjiga.setDatumObjavljivanja(cursorKnjige.getString(cursorKnjige.getColumnIndex(COLUMN_DATUM_OBJAVLJIVANJA)));
                 knjiga.setBrojStranica(cursorKnjige.getInt(cursorKnjige.getColumnIndex(COLUMN_BROJ_STRANICA)));
+                knjiga.setPregledana(cursorKnjige.getInt(cursorKnjige.getColumnIndex(COLUMN_PREGLEDANA)));
                 String s = cursorKnjige.getString(cursorKnjige.getColumnIndex(COLUMN_SLIKA));
                 try {
                     knjiga.setSlika(new URL(s));
@@ -231,6 +232,7 @@ public class BazaOpenHelper extends SQLiteOpenHelper {
                 knjiga.setKategorijaId(cursorKnjige.getInt(cursorKnjige.getColumnIndex(COLUMN_ID_KATEGORIJE)));
                 knjiga.setDatumObjavljivanja(cursorKnjige.getString(cursorKnjige.getColumnIndex(COLUMN_DATUM_OBJAVLJIVANJA)));
                 knjiga.setBrojStranica(cursorKnjige.getInt(cursorKnjige.getColumnIndex(COLUMN_BROJ_STRANICA)));
+                knjiga.setPregledana(cursorKnjige.getInt(cursorKnjige.getColumnIndex(COLUMN_PREGLEDANA)));
                 String s = cursorKnjige.getString(cursorKnjige.getColumnIndex(COLUMN_SLIKA));
                 try {
                     knjiga.setSlika(new URL(s));
@@ -275,6 +277,30 @@ public class BazaOpenHelper extends SQLiteOpenHelper {
         }
 
         return knjige;
+    }
+
+    public void oznaciKnjigu(Knjiga knjiga) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Pretraživanje knjiga i uzimanje one knjige sa datim id-em
+        String queryKnjige = "select * from " + TABLE_KNJIGA + " where " + COLUMN_ID_WEB_SERVIS + " = \"" +
+                knjiga.getId() + "\"";
+        Cursor cursorKnjige = db.rawQuery(queryKnjige, null);
+
+        while(cursorKnjige.moveToNext()) {
+            ContentValues valuesKnjiga = new ContentValues();
+            valuesKnjiga.put(COLUMN_NAZIV, knjiga.getNaziv());
+            valuesKnjiga.put(COLUMN_DATUM_OBJAVLJIVANJA, knjiga.getDatumObjavljivanja());
+            valuesKnjiga.put(COLUMN_OPIS, knjiga.getOpis());
+            valuesKnjiga.put(COLUMN_BROJ_STRANICA, knjiga.getBrojStranica());
+            valuesKnjiga.put(COLUMN_ID_WEB_SERVIS, knjiga.getId());
+            valuesKnjiga.put(COLUMN_ID_KATEGORIJE, knjiga.getKategorijaId());
+            valuesKnjiga.put(COLUMN_SLIKA, knjiga.getSlika().toString());
+            valuesKnjiga.put(COLUMN_PREGLEDANA, 1);
+
+            db.update(TABLE_KNJIGA, valuesKnjiga, COLUMN_ID_WEB_SERVIS + " = \"" +
+                    knjiga.getId() + "\"", null);
+        }
     }
 
 }

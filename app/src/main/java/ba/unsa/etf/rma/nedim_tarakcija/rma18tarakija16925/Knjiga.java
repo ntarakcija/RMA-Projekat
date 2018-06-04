@@ -19,6 +19,7 @@ public class Knjiga implements Parcelable {
     String kategorija;
     Uri lokacijaSlike;
     Integer kategorijaId;
+    int pregledana;
 
     private String nacinDodavanja;
 
@@ -127,6 +128,9 @@ public class Knjiga implements Parcelable {
     public void setKategorijaId(int kategorijaId) {
         this.kategorijaId = kategorijaId;
     }
+
+    public int getPregledana() { return pregledana; }
+    public void setPregledana(int pregledana) { this.pregledana = pregledana; }
 
     protected Knjiga(Parcel in) {
         kategorija = in.readString();

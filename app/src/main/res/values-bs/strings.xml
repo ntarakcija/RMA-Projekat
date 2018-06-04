@@ -39,4 +39,6 @@
     <string name="permisijeNisuDodane">Nisu dodane sve potrebnepermisije.</string>
     <string name="knjigeVelikaSlova">KNJIGE:</string>
     <string name="kategorijeVelikaSlova">KATEGORIJE:</string>
+    <string name="procitana">PROČITANA</string>
+    <string name="obrisi">Obriši</string>
 </resources>

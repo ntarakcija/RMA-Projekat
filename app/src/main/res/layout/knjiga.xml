@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clickable="true">
+    android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -107,8 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/opis"
-                android:maxLines="5"
-                android:scrollbars="vertical"/>
+                android:maxLines="5"/>
 
             <TextView
                 android:id="@+id/eOpis"
@@ -124,14 +123,43 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:weightSum="1"
+            android:weightSum="3"
             android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:button="@drawable/check"
+                    android:buttonTint="@color/colorBlue2"
+                    android:checked="true"
+                    android:layout_margin="4dp"
+                    android:focusableInTouchMode="false"
+                    android:clickable="false"
+                    android:focusable="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/procitana"
+                    android:textColor="@color/colorBlue2"
+                    android:textSize="11dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/dPreporuci"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_weight="1"
                 android:text="@string/preporuci"
                 android:layout_margin="5dp"
                 android:background="@drawable/invisible_button"
@@ -139,6 +167,26 @@
                 android:drawableTop="@drawable/recomend_icon"
                 android:textColor="@color/colorBlue2"
                 android:textSize="11dp"
+                android:focusableInTouchMode="false"
+                android:clickable="false"
+                android:focusable="false"
+                />
+
+            <Button
+                android:id="@+id/dObrisi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/obrisi"
+                android:layout_margin="5dp"
+                android:background="@drawable/invisible_button"
+                android:drawableTint="@color/colorBlue2"
+                android:drawableTop="@drawable/delete_icon"
+                android:textColor="@color/colorBlue2"
+                android:textSize="11dp"
+                android:focusableInTouchMode="false"
+                android:clickable="false"
+                android:focusable="false"
                 />
 
         </LinearLayout>
