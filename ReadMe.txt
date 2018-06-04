@@ -23,3 +23,20 @@
 +++++ Nije uraðeno:
 +++++ Zadatak 1 - traženo filtriranje
 +++++ Zadatak 3
++++++
++++++ Spirala 3
++++++ Uraðeno:
++++++ Zadatak a.1 - uraðeno sve
++++++ Zadatak a.2 - uraðeno sve
++++++ Zadatak b   - uraðeno sve 
++++++ Zadatak c   - uraðeno sve
++++++ Nije uraðeno:
++++++
++++++ Spirala 4
++++++ Uraðeno:
++++++ Zadatak 1   - uraðeno sve
++++++ Zadatak 2   - uraðeno sve
++++++ Zadatak 3.a - uraðeno sve
++++++ Zadatak 3.b - uraðeno sve
++++++ Zadatak 3.c - uraðeno sve
++++++ Zadatak 3.d - uraðeno sve

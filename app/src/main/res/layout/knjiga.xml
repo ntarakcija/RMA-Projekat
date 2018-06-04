@@ -28,12 +28,12 @@
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:descendantFocusability="blocksDescendants"
                     android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_gravity="center_vertical">
 
                 <TextView
                         android:id="@+id/eNaziv"
@@ -42,6 +42,7 @@
                         android:layout_weight="1"
                         android:text="Naziv knjige"
                         android:textSize="18sp"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginTop="5dp"
                         android:maxLines="2"/>
 
