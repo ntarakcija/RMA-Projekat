@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:descendantFocusability="blocksDescendants"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/naslovna"
@@ -37,22 +38,23 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorWhite"
                 android:descendantFocusability="blocksDescendants"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
 
                 <TextView
                     android:id="@+id/naziv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:text="Naziv knjige"
-                    android:textSize="18sp"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/autor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:text="Ime i prezime autora" />
 
 

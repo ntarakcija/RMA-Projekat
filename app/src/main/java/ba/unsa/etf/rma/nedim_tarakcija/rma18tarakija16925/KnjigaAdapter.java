@@ -8,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -66,13 +69,21 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
             TextView textOpis = (TextView) v.findViewById(R.id.eOpis);
             Button buttonPreporuci = (Button) v.findViewById(R.id.dPreporuci);
             LinearLayout pozadina = (LinearLayout) v.findViewById(R.id.layout);
+            final CheckBox cbProcitana = (CheckBox) v.findViewById(R.id.cbProcitana);
+
+            final BazaOpenHelper helper;
+            SQLiteDatabase db;
+            helper = new BazaOpenHelper(getContext());
+            db = helper.getReadableDatabase();
 
             if(pozadina != null) {
                 if(knjiga.getPregledana() == 1) {
                     v.setBackgroundColor(v.getResources().getColor(R.color.lightBlue));
+                    cbProcitana.setChecked(true);
                 }
                 else {
                     v.setBackgroundColor(Color.TRANSPARENT);
+                    cbProcitana.setChecked(false);
                 }
             }
 
@@ -144,6 +155,21 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
                         fragmentTransaction.replace(R.id.fragment, preporuciF);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
+                    }
+                }
+            });
+
+            final View finalV = v;
+            cbProcitana.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(cbProcitana.isChecked()) {
+                        helper.oznaciKnjigu(knjiga, true);
+                        finalV.setBackgroundColor(finalV.getResources().getColor(R.color.lightBlue));
+                    }
+                    else {
+                        helper.oznaciKnjigu(knjiga, false);
+                        finalV.setBackgroundColor(Color.TRANSPARENT);
                     }
                 }
             });

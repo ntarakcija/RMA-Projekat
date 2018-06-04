@@ -80,7 +80,7 @@ public class KnjigeFragment extends android.app.Fragment {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                helper.oznaciKnjigu((Knjiga) listaKnjiga.getItemAtPosition(position));
+                helper.oznaciKnjigu((Knjiga) listaKnjiga.getItemAtPosition(position), true);
                 view.setBackgroundColor(view.getResources().getColor(R.color.lightBlue));
             }
         });

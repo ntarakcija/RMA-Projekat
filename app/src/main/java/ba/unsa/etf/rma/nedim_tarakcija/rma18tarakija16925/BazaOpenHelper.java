@@ -279,7 +279,7 @@ public class BazaOpenHelper extends SQLiteOpenHelper {
         return knjige;
     }
 
-    public void oznaciKnjigu(Knjiga knjiga) {
+    public void oznaciKnjigu(Knjiga knjiga, boolean procitana) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // Pretraživanje knjiga i uzimanje one knjige sa datim id-em
@@ -296,11 +296,13 @@ public class BazaOpenHelper extends SQLiteOpenHelper {
             valuesKnjiga.put(COLUMN_ID_WEB_SERVIS, knjiga.getId());
             valuesKnjiga.put(COLUMN_ID_KATEGORIJE, knjiga.getKategorijaId());
             valuesKnjiga.put(COLUMN_SLIKA, knjiga.getSlika().toString());
-            valuesKnjiga.put(COLUMN_PREGLEDANA, 1);
+            if(procitana)
+                valuesKnjiga.put(COLUMN_PREGLEDANA, 1);
+            else
+                valuesKnjiga.put(COLUMN_PREGLEDANA, 0);
 
             db.update(TABLE_KNJIGA, valuesKnjiga, COLUMN_ID_WEB_SERVIS + " = \"" +
                     knjiga.getId() + "\"", null);
         }
     }
-
 }

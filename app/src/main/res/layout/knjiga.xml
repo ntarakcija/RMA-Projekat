@@ -33,7 +33,8 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorWhite"
                     android:descendantFocusability="blocksDescendants"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                 <TextView
                         android:id="@+id/eNaziv"
@@ -42,14 +43,16 @@
                         android:layout_weight="1"
                         android:text="Naziv knjige"
                         android:textSize="18sp"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:maxLines="2"/>
 
                 <TextView
                         android:id="@+id/eAutor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Ime i prezime autora" />
+                        android:text="Ime i prezime autora"
+                        android:maxLines="2"/>
 
 
             </LinearLayout>
@@ -134,13 +137,14 @@
                 android:orientation="vertical">
 
                 <CheckBox
+                    android:id="@+id/cbProcitana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:button="@drawable/check"
                     android:buttonTint="@color/colorBlue2"
-                    android:checked="true"
-                    android:layout_margin="4dp"
+                    android:checked="false"
+                    android:layout_margin="1dp"
                     android:focusableInTouchMode="false"
                     android:clickable="false"
                     android:focusable="false"/>

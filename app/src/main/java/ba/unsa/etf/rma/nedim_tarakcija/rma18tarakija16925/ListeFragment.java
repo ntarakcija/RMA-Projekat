@@ -8,11 +8,14 @@ import android.app.FragmentManagerNonConfig;
 import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -64,6 +67,7 @@ public class ListeFragment extends android.app.Fragment {
         return v;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -81,6 +85,8 @@ public class ListeFragment extends android.app.Fragment {
         buttonDodajOnline = (Button) getView().findViewById(R.id.dDodajOnline);
 
         buttonDodajKategoriju.setEnabled(false);
+        buttonDodajKategoriju.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorDarkGray)));
+        buttonDodajKategoriju.setTextColor(getResources().getColor(R.color.colorDarkGray));
 
         if(kategorijeAutori) {
             Biblioteka b = Biblioteka.getBiblioteku();
@@ -274,6 +280,7 @@ public class ListeFragment extends android.app.Fragment {
         fragmentTransaction.commit();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void dodajKategoriju() {
         if(tekstPretraga.getText().toString().isEmpty()) {
             Toast.makeText(getActivity(), getString(R.string.praznaKategorija), Toast.LENGTH_SHORT).show();
@@ -288,10 +295,13 @@ public class ListeFragment extends android.app.Fragment {
                 prikaziKategorije();
                 tekstPretraga.setText("");
                 buttonDodajKategoriju.setEnabled(false);
+                buttonDodajKategoriju.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorDarkGray)));
+                buttonDodajKategoriju.setTextColor(getResources().getColor(R.color.colorDarkGray));
             }
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void filtriraj() {
         ArrayList<String> kategorije = new ArrayList<>();
         String query = "select * from " + helper.TABLE_KATEGORIJA + " where " + helper.COLUMN_NAZIV + " = \"" +
@@ -307,6 +317,8 @@ public class ListeFragment extends android.app.Fragment {
 
         if(cursor.getCount() == 0) {
             buttonDodajKategoriju.setEnabled(true);
+            buttonDodajKategoriju.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorBlue2)));
+            buttonDodajKategoriju.setTextColor(getResources().getColor(R.color.colorBlue2));
         }
     }
 }
