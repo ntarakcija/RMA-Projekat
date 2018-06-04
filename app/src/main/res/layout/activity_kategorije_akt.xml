@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorDarkGray"
+    android:background="@drawable/home"
     tools:context=".KategorijeAkt"><![CDATA[
 
     ="@+id/fragmentContainer"
@@ -13,7 +13,7 @@
 
 ]]>
 
-    <fragment
+    <FrameLayout
         android:id="@+id/fragment"
         android:name="ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.ListeFragment"
         android:layout_width="match_parent"

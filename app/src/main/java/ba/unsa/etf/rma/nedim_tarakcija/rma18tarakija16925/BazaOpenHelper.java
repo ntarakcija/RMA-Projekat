@@ -93,8 +93,6 @@ public class BazaOpenHelper extends SQLiteOpenHelper {
 
     long dodajKategoriju(String naziv) {
         SQLiteDatabase db = this.getReadableDatabase();
-        //String query = "select * from " + TABLE_KATEGORIJA + " where " + COLUMN_NAZIV + " = \"" + naziv + "\"";
-        //Cursor cursor = db.rawQuery(query, null);
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAZIV, naziv);

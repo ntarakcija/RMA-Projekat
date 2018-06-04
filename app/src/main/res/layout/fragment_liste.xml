@@ -5,15 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     tools:context=".KategorijeAkt"
     android:clickable="true">
 
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/home"
             android:padding="5dp">
 
             <LinearLayout
@@ -163,7 +162,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="15dp">
 
@@ -171,14 +170,14 @@
                     android:id="@+id/listaKategorija"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:backgroundTint="@color/colorBlue"
                     android:divider="@color/colorBlue2"
                     android:dividerHeight="1dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"/>
+                    android:gravity="center" />
             </LinearLayout>
 
         </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

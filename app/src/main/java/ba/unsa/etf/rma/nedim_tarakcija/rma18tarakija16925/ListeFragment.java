@@ -9,6 +9,7 @@ import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -26,6 +27,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -264,9 +266,19 @@ public class ListeFragment extends android.app.Fragment {
             knjigeF.setArguments(bundle);
         }
 
-        fragmentTransaction.replace(R.id.fragment, knjigeF);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        FrameLayout fragment2 = (FrameLayout) getActivity().findViewById(R.id.fragment2);
+
+        if(fragment2 != null) {
+            fragmentTransaction.replace(R.id.fragment2, knjigeF, "KnjigaFragment");
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+
+        }
+        else {
+            fragmentTransaction.replace(R.id.fragment, knjigeF);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
     }
 
     public void dodajOnline() {
@@ -289,6 +301,7 @@ public class ListeFragment extends android.app.Fragment {
             long id = helper.dodajKategoriju(tekstPretraga.getText().toString());
             if(id == -1) {
                 Toast.makeText(getActivity(), getString(R.string.kategorijaPostoji), Toast.LENGTH_SHORT).show();
+                prikaziKategorije();
             }
             else {
                 Toast.makeText(getActivity(), getString(R.string.kategorijaDodana), Toast.LENGTH_SHORT).show();
@@ -297,6 +310,7 @@ public class ListeFragment extends android.app.Fragment {
                 buttonDodajKategoriju.setEnabled(false);
                 buttonDodajKategoriju.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorDarkGray)));
                 buttonDodajKategoriju.setTextColor(getResources().getColor(R.color.colorDarkGray));
+                prikaziKategorije();
             }
         }
     }

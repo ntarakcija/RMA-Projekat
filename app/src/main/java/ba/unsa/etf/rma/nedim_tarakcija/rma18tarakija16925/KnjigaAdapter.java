@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -26,6 +27,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -152,9 +154,18 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
 
                         preporuciF.setArguments(bundle);
 
-                        fragmentTransaction.replace(R.id.fragment, preporuciF);
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.commit();
+                        Configuration config = getContext().getResources().getConfiguration();
+
+                        if(config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                            fragmentTransaction.replace(R.id.fragment2, preporuciF, "PreporuciFragment");
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                        }
+                        else {
+                            fragmentTransaction.replace(R.id.fragment, preporuciF);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                        }
                     }
                 }
             });

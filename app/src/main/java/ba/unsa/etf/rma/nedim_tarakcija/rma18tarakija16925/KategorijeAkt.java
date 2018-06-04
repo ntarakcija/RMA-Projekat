@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -27,6 +28,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -49,12 +51,32 @@ public class KategorijeAkt extends AppCompatActivity {
         setContentView(R.layout.activity_kategorije_akt);
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorBlue2));
 
+        Configuration config = getResources().getConfiguration();
+
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        ListeFragment listeF = new ListeFragment();
-        fragmentTransaction.replace(R.id.fragment, listeF);
-        fragmentTransaction.commit();
+        FrameLayout fragment2 = (FrameLayout) findViewById(R.id.fragment2);
+
+        if(fragment2 != null) {
+            KnjigeFragment kf = (KnjigeFragment) fragmentManager.findFragmentById(R.id.fragment2);
+            if(kf != null) {
+                kf = new KnjigeFragment();
+                fragmentTransaction.replace(R.id.fragment2, kf, "KnjigaFragment");
+                fragmentTransaction.commit();
+            }
+        }
+
+        ListeFragment listeF = (ListeFragment) fragmentManager.findFragmentByTag("ListeFragment");
+        if(listeF == null) {
+            listeF = new ListeFragment();
+            fragmentTransaction.replace(R.id.fragment, listeF, "ListeFragment");
+            fragmentTransaction.commit();
+        }
+        else {
+            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+
     }
 
 }

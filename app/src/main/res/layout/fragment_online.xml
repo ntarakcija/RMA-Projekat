@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentOnline"
-    android:background="@drawable/home"
     android:clickable="true">
 
     <!-- TODO: Update blank fragment layout -->
@@ -39,7 +38,8 @@
                 android:textColor="@color/colorBlue2"
                 android:textColorHint="@color/colorDarkGray"
                 android:background="@drawable/round_button_outline"
-                android:paddingLeft="10dp"/>
+                android:paddingLeft="10dp"
+                android:textSize="14dp"/>
 
         </LinearLayout>
 
