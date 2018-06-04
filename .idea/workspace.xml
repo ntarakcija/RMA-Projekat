@@ -16,9 +16,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1dd2b647-f43c-4ee2-b506-1129e0e711ed" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_preporuci.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_preporuci.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/knjiga.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/knjiga.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -131,13 +129,13 @@
       </file>
       <file leaf-file-name="fragment_preporuci.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_preporuci.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="48" column="53" lean-forward="false" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="164" column="17" lean-forward="false" selection-start-line="164" selection-start-column="17" selection-end-line="164" selection-end-column="17" />
               <folding />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer2">
+          <provider editor-type-id="android-designer2">
             <state />
           </provider>
         </entry>
@@ -2247,8 +2245,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_liste.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_knjige.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_online.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_preporuci.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/knjiga.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_preporuci.xml" />
       </list>
     </option>
   </component>
@@ -3109,13 +3107,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_preporuci.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="48" column="53" lean-forward="false" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="164" column="17" lean-forward="false" selection-start-line="164" selection-start-column="17" selection-end-line="164" selection-end-column="17" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer2">
+      <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
