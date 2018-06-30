@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     android:clickable="true">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,7 +17,9 @@
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints"
-        android:background="@color/colorWhite">
+        android:scrollbars="vertical">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,19 +38,33 @@
             <EditText
                 android:id="@+id/imeAutora"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginTop="10dp"
-                android:ems="10"
+                android:ems="12"
                 android:hint="@string/imeAutora"
-                android:inputType="textPersonName" />
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textColor="@color/colorBlue2"
+                android:textColorHint="@color/colorDarkGray"
+                android:background="@drawable/round_button_outline"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/nazivKnjige"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
+                android:layout_height="40dp"
+                android:ems="12"
                 android:hint="@string/nazivKnjige"
-                android:inputType="textPersonName" />
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textColor="@color/colorBlue2"
+                android:textColorHint="@color/colorDarkGray"
+                android:background="@drawable/round_button_outline"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="14dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,19 +76,25 @@
                 <Button
                     android:id="@+id/dNadjiSliku"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="20dp"
                     android:text="@string/ucitajSliku"
-                    android:background="@color/colorBlue"
-                    android:textColor="@color/colorWhite"/>
+                    android:background="@drawable/invisible_button"
+                    android:drawableTop="@drawable/image_icon"
+                    android:drawableTint="@color/colorBlue2"
+                    android:textColor="@color/colorBlue2"
+                    android:textSize="12dp"
+                    />
 
                 <Spinner
                     android:id="@+id/sKategorijaKnjige"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="right"
-                    android:layout_weight="1" />
+                    android:layout_height="wrap_content"
+                    android:popupBackground="@color/colorWhite"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    />
 
             </LinearLayout>
 
@@ -85,23 +111,31 @@
             <Button
                 android:id="@+id/dPonisti"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:text="@string/ponisti"
-                android:background="@android:color/holo_red_dark"
-                android:textColor="@color/colorWhite"/>
+                android:drawableTop="@drawable/cancel_icon"
+                android:background="@drawable/invisible_button"
+                android:drawableTint="@color/colorDarkRed"
+                android:textColor="@color/colorDarkRed"
+                android:textSize="12dp"/>
 
             <Button
                 android:id="@+id/dUpisiKnjigu"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:text="@string/upisiKnjigu"
-                android:background="@color/colorBlue"
-                android:textColor="@color/colorWhite"/>
+                android:text="@string/dodajKnjigu"
+                android:background="@drawable/invisible_button"
+                android:drawableTint="@color/colorBlue2"
+                android:drawableTop="@drawable/add_icon"
+                android:textColor="@color/colorBlue2"
+                android:textSize="12dp"/>
         </LinearLayout>
+
     </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

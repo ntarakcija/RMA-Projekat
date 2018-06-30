@@ -56,9 +56,6 @@ public class FragmentOnline extends android.app.Fragment implements
             kategorije.add(cursor.getString(cursor.getColumnIndex(BazaOpenHelper.COLUMN_NAZIV)));
         }
 
-        //ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, kategorije);
-        //spinnerKategorije.setAdapter(adapterKategorije);
-
         KategorijaAdapter adapterKategorije = new KategorijaAdapter(getActivity(), R.layout.kategorija, kategorije);
         spinnerKategorije.setAdapter(adapterKategorije);
 

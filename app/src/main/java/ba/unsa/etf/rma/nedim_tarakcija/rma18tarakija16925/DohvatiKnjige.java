@@ -50,7 +50,7 @@ public class DohvatiKnjige extends AsyncTask<String, Integer, Void> {
                 e.printStackTrace();
             }
 
-            String link​ = "https://www.googleapis.com/books/v1/volumes?q=intitle:";
+            String link​ = "https://www.googleapis.com/books/v1/volumes?q=";
             String rezCount = "&maxResults=5";
             String url1 = link​ + query + rezCount;
 

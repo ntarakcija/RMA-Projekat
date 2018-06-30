@@ -41,4 +41,6 @@
     <string name="kategorijeVelikaSlova">CATEGORIES:</string>
     <string name="procitana">READ</string>
     <string name="obrisi">Delete</string>
+    <string name="knjigaObrisana">Book deleted.</string>
+    <string name="dodavanjeOfflineError">Adding books offline is disabled because of inconsistency of the data.</string>
 </resources>

@@ -155,6 +155,7 @@
                 android:drawableTint="@color/colorBlue2"
                 android:drawableTop="@drawable/send_icon"
                 android:text="@string/posalji"
+                android:textSize="12dp"
                 android:textColor="@color/colorBlue2" />
 
         </LinearLayout>

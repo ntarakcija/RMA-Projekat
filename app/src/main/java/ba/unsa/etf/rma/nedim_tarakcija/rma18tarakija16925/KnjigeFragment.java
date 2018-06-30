@@ -38,7 +38,7 @@ public class KnjigeFragment extends android.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_knjige, container, false);
 
-        buttonPovratak = (Button) v.findViewById(R.id.dPovratak);
+        //buttonPovratak = (Button) v.findViewById(R.id.dPovratak);
         helper = new BazaOpenHelper(getActivity());
         db = helper.getReadableDatabase();
         listaKnjiga = (ListView) v.findViewById(R.id.listaKnjiga);
@@ -69,21 +69,14 @@ public class KnjigeFragment extends android.app.Fragment {
             listaKnjiga.setAdapter(adapterKnjige);
         }
 
+        /*
         buttonPovratak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 povratak();
             }
         });
-
-        listaKnjiga.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                helper.oznaciKnjigu((Knjiga) listaKnjiga.getItemAtPosition(position), true);
-                view.setBackgroundColor(view.getResources().getColor(R.color.lightBlue));
-            }
-        });
+        */
 
         return v;
     }

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -46,6 +47,8 @@ public class DodavanjeKnjigeFragment extends android.app.Fragment {
     ArrayList<String> kategorije;
     Bitmap slika;
     Uri lokacijaSlike;
+    BazaOpenHelper helper;
+    SQLiteDatabase db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,10 +62,19 @@ public class DodavanjeKnjigeFragment extends android.app.Fragment {
         buttonPonisti = (Button) v.findViewById(R.id.dPonisti);
         imgViewNaslovnaStrana = (ImageView) v.findViewById(R.id.naslovnaStr);
 
-        //kategorije = getArguments().getStringArrayList("kategorije");
-        Biblioteka b = Biblioteka.getBiblioteku();
-        kategorije = b.getKategorije();
-        ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, kategorije);
+        // Dohvatanje kategorija iz baze
+        helper = new BazaOpenHelper(getActivity());
+        db = helper.getReadableDatabase();
+
+        kategorije = new ArrayList<>();
+        String query = "select * from " + helper.TABLE_KATEGORIJA;
+        Cursor cursor = db.rawQuery(query, null);
+
+        while(cursor.moveToNext()) {
+            kategorije.add(cursor.getString(cursor.getColumnIndex(BazaOpenHelper.COLUMN_NAZIV)));
+        }
+
+        ArrayAdapter<String> adapterKategorije =  new ArrayAdapter<String>(getActivity(), R.layout.kategorija, kategorije);
         spinerKategorije.setAdapter(adapterKategorije);
 
         buttonPonisti.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +114,7 @@ public class DodavanjeKnjigeFragment extends android.app.Fragment {
     }
 
     private void upisiKnjigu() {
+        /*
         if(imeAutora.getText().toString().equals("") || nazivKnjige.getText().toString().equals("")) {
             Toast.makeText(getActivity(), getString(R.string.nedovoljnoPodataka), Toast.LENGTH_SHORT).show();
         }
@@ -128,6 +141,9 @@ public class DodavanjeKnjigeFragment extends android.app.Fragment {
             imeAutora.setText("");
             nazivKnjige.setText("");
         }
+        */
+
+        Toast.makeText(getActivity(), getString(R.string.dodavanjeOfflineError), Toast.LENGTH_LONG).show();
     }
 
     @Override

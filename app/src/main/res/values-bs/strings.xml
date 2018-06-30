@@ -41,4 +41,6 @@
     <string name="kategorijeVelikaSlova">KATEGORIJE:</string>
     <string name="procitana">PROČITANA</string>
     <string name="obrisi">Obriši</string>
+    <string name="knjigaObrisana">Knjiga obrisana.</string>
+    <string name="dodavanjeOfflineError">Dodavanje offline je onemogućeno zbog nekonzistentnosti.</string>
 </resources>

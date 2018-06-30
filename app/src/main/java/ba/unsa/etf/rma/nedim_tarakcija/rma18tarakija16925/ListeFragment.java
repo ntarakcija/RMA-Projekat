@@ -46,7 +46,6 @@ import static ba.unsa.etf.rma.nedim_tarakcija.rma18tarakija16925.BazaOpenHelper.
 public class ListeFragment extends android.app.Fragment {
 
     EditText tekstPretraga;
-    Button buttonPretraga;
     Button buttonDodajKategoriju;
     Button buttonDodajKnjigu;
     Button buttonKategorije;
@@ -66,6 +65,7 @@ public class ListeFragment extends android.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_liste, container, false);
         getActivity().getWindow().setBackgroundDrawableResource(R.drawable.home);
+
         return v;
     }
 
@@ -78,7 +78,6 @@ public class ListeFragment extends android.app.Fragment {
         db = helper.getReadableDatabase();
 
         tekstPretraga = (EditText) getView().findViewById(R.id.tekstPretraga);
-        buttonPretraga = (Button) getView().findViewById(R.id.dPretraga);
         buttonDodajKategoriju = (Button) getView().findViewById(R.id.dDodajKategoriju);
         buttonDodajKnjigu = (Button) getView().findViewById(R.id.dDodajKnjigu);
         buttonKategorije = (Button) getView().findViewById(R.id.dKategorije);
@@ -86,9 +85,9 @@ public class ListeFragment extends android.app.Fragment {
         listLista = (ListView) getView().findViewById(R.id.listaKategorija);
         buttonDodajOnline = (Button) getView().findViewById(R.id.dDodajOnline);
 
-        buttonDodajKategoriju.setEnabled(false);
-        buttonDodajKategoriju.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorDarkGray)));
-        buttonDodajKategoriju.setTextColor(getResources().getColor(R.color.colorDarkGray));
+        //buttonDodajKategoriju.setEnabled(false);
+        //buttonDodajKategoriju.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorDarkGray)));
+        //buttonDodajKategoriju.setTextColor(getResources().getColor(R.color.colorDarkGray));
 
         if(kategorijeAutori) {
             Biblioteka b = Biblioteka.getBiblioteku();
@@ -167,10 +166,20 @@ public class ListeFragment extends android.app.Fragment {
             }
         });
 
-        buttonPretraga.setOnClickListener(new View.OnClickListener() {
+        tekstPretraga.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                filtriraj();
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                adapterKategorije.getFilter().filter(s);
             }
         });
     }
@@ -200,7 +209,6 @@ public class ListeFragment extends android.app.Fragment {
         listLista.setAdapter(adapterKategorije);
 
         tekstPretraga.setVisibility(View.VISIBLE);
-        buttonPretraga.setVisibility(View.VISIBLE);
         buttonDodajKategoriju.setVisibility(View.VISIBLE);
         kategorijeAutori = true;
     }
@@ -232,7 +240,6 @@ public class ListeFragment extends android.app.Fragment {
         listLista.setAdapter(adapterAutori);
 
         tekstPretraga.setVisibility(View.GONE);
-        buttonPretraga.setVisibility(View.GONE);
         buttonDodajKategoriju.setVisibility(View.GONE);
         kategorijeAutori = false;
     }
@@ -307,32 +314,11 @@ public class ListeFragment extends android.app.Fragment {
                 Toast.makeText(getActivity(), getString(R.string.kategorijaDodana), Toast.LENGTH_SHORT).show();
                 prikaziKategorije();
                 tekstPretraga.setText("");
-                buttonDodajKategoriju.setEnabled(false);
-                buttonDodajKategoriju.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorDarkGray)));
-                buttonDodajKategoriju.setTextColor(getResources().getColor(R.color.colorDarkGray));
+                //buttonDodajKategoriju.setEnabled(false);
+                //buttonDodajKategoriju.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorDarkGray)));
+                //buttonDodajKategoriju.setTextColor(getResources().getColor(R.color.colorDarkGray));
                 prikaziKategorije();
             }
-        }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    public void filtriraj() {
-        ArrayList<String> kategorije = new ArrayList<>();
-        String query = "select * from " + helper.TABLE_KATEGORIJA + " where " + helper.COLUMN_NAZIV + " = \"" +
-                tekstPretraga.getText().toString() + "\"";;
-        Cursor cursor = db.rawQuery(query, null);
-
-        while(cursor.moveToNext()) {
-            kategorije.add(cursor.getString(cursor.getColumnIndex(BazaOpenHelper.COLUMN_NAZIV)));
-        }
-
-        adapterKategorije = new KategorijaAdapter(getActivity(), R.layout.kategorija, kategorije);
-        listLista.setAdapter(adapterKategorije);
-
-        if(cursor.getCount() == 0) {
-            buttonDodajKategoriju.setEnabled(true);
-            buttonDodajKategoriju.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorBlue2)));
-            buttonDodajKategoriju.setTextColor(getResources().getColor(R.color.colorBlue2));
         }
     }
 }

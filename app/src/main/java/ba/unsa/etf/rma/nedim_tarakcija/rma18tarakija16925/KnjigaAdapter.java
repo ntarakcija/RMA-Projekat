@@ -72,6 +72,7 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
             Button buttonPreporuci = (Button) v.findViewById(R.id.dPreporuci);
             LinearLayout pozadina = (LinearLayout) v.findViewById(R.id.layout);
             final CheckBox cbProcitana = (CheckBox) v.findViewById(R.id.cbProcitana);
+            final Button buttonObrisi = (Button) v.findViewById(R.id.dObrisi);
 
             final BazaOpenHelper helper;
             SQLiteDatabase db;
@@ -80,7 +81,7 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
 
             if(pozadina != null) {
                 if(knjiga.getPregledana() == 1) {
-                    v.setBackgroundColor(v.getResources().getColor(R.color.lightBlue));
+                    //v.setBackgroundColor(v.getResources().getColor(R.color.lightBlue));
                     cbProcitana.setChecked(true);
                 }
                 else {
@@ -176,12 +177,23 @@ public class KnjigaAdapter extends ArrayAdapter<Knjiga> {
                 public void onClick(View v) {
                     if(cbProcitana.isChecked()) {
                         helper.oznaciKnjigu(knjiga, true);
-                        finalV.setBackgroundColor(finalV.getResources().getColor(R.color.lightBlue));
+                        //finalV.setBackgroundColor(finalV.getResources().getColor(R.color.lightBlue));
                     }
                     else {
                         helper.oznaciKnjigu(knjiga, false);
-                        finalV.setBackgroundColor(Color.TRANSPARENT);
+                        //finalV.setBackgroundColor(Color.TRANSPARENT);
                     }
+                }
+            });
+
+            buttonObrisi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    helper.obrisiKnjigu(knjiga.getId());
+                    Toast.makeText(getContext(), getContext().getString(R.string.knjigaObrisana), Toast.LENGTH_SHORT).show();
+                    final Context context = parent.getContext();
+                    FragmentManager fragmentManager = ((Activity) context).getFragmentManager();
+                    fragmentManager.popBackStack();
                 }
             });
         }

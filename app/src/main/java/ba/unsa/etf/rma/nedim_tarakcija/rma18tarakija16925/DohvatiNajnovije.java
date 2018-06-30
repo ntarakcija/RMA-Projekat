@@ -20,7 +20,7 @@ import java.util.Comparator;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
+public class  DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
 
     public interface IDohvatiNajnovijeDone {
         public void onNajnovijeDone(ArrayList<Knjiga> knjige);
@@ -43,7 +43,7 @@ public class DohvatiNajnovije extends AsyncTask<String, Integer, Void> {
             e.printStackTrace();
         }
 
-        String link​ = "https://www.googleapis.com/books/v1/volumes?q=inauthor:";
+        String link​ = "https://www.googleapis.com/books/v1/volumes?q=";
         String rezCount = "&maxResults=40";
         String orderBy = "&orderBy=newest";
         String url1 = link​ + query + rezCount + orderBy;

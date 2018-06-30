@@ -31,7 +31,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:width="50dp"
-                android:ems="10"
+                android:ems="12"
                 android:hint="@string/pretrazi"
                 android:inputType="text"
                 android:textCursorDrawable="@drawable/cursor"
@@ -65,7 +65,7 @@
                 android:textColor="@color/colorBlue2"
                 android:drawableTop="@drawable/search_icon"
                 android:drawableTint="@color/colorBlue2"
-                android:textSize="11dp"/>
+                android:textSize="12dp"/>
 
             <Button
                 android:id="@+id/dAdd"
@@ -79,7 +79,7 @@
                 android:textColor="@color/colorBlue2"
                 android:drawableTop="@drawable/add_icon"
                 android:drawableTint="@color/colorBlue2"
-                android:textSize="11dp"/>
+                android:textSize="12dp"/>
 
         </LinearLayout>
 

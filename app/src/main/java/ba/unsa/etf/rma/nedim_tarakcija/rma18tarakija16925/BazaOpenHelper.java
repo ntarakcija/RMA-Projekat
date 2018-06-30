@@ -303,4 +303,53 @@ public class BazaOpenHelper extends SQLiteOpenHelper {
                     knjiga.getId() + "\"", null);
         }
     }
+
+    public void obrisiKnjigu(String idKnjige) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Integer idTrenutna = 0;
+
+        // Pretraživanje knjiga i uzimanje one knjige sa datim id-em
+        String queryKnjige = "select * from " + TABLE_KNJIGA + " where " + COLUMN_ID_WEB_SERVIS + " = \"" +
+                idKnjige + "\"";
+        Cursor cursorKnjige = db.rawQuery(queryKnjige, null);
+
+        // Brisanje knjige
+        while(cursorKnjige.moveToNext()) {
+            idTrenutna = cursorKnjige.getInt(cursorKnjige.getColumnIndex(COLUMN_ID));
+            String query = "delete from " + TABLE_KNJIGA + " where " + COLUMN_ID + " = \"" +
+                    cursorKnjige.getInt(cursorKnjige.getColumnIndex(COLUMN_ID)) + "\"";
+            db.execSQL(query);
+        }
+
+        // Pretraživanje autorstva
+        String queryAutorstvo = "select * from " + TABLE_AUTORSTVO + " where " + COLUMN_ID_KNJIGE + " = \"" +
+                idTrenutna.toString() + "\"";
+        Cursor cursorAutorstvo = db.rawQuery(queryAutorstvo, null);
+
+        // Brisanje iz autorstva i spremanje id autora koji imaju samo tu knjigu
+        ArrayList<Integer> idAutora = new ArrayList<>();
+        while(cursorAutorstvo.moveToNext()) {
+            String query = "delete from " + TABLE_AUTORSTVO + " where " + COLUMN_ID + " = \"" +
+                    cursorAutorstvo.getInt(cursorAutorstvo.getColumnIndex(COLUMN_ID)) + "\"";
+
+            // Pretraživanje autorstva po autorima i provjeravanje je li imaju samo jednu knjigu
+            String queryAutorstvo2 = "select * from " + TABLE_AUTORSTVO + " where " + COLUMN_ID_AUTORA + " = \"" +
+                    cursorAutorstvo.getInt(cursorAutorstvo.getColumnIndex(COLUMN_ID_AUTORA)) + "\"";
+            Cursor cursorAutorstvo2 = db.rawQuery(queryAutorstvo2, null);
+
+            if(cursorAutorstvo2.getCount() == 1) {
+                idAutora.add(cursorAutorstvo.getInt(cursorAutorstvo.getColumnIndex(COLUMN_ID_AUTORA)));
+            }
+
+            db.execSQL(query);
+        }
+
+        // Bisanje autora koji su imali samo datu knjigu
+        for(int i = 0; i < idAutora.size(); i++) {
+            String query = "delete from " + TABLE_AUTOR + " where " + COLUMN_ID + " = \"" +
+                    idAutora.get(i) + "\"";
+            db.execSQL(query);
+        }
+
+    }
 }

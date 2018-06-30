@@ -13,7 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:layout_marginLeft="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,9 +30,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:ems="10"
                     android:hint="@string/unesiKategoriju"
                     android:inputType="textPersonName"
@@ -43,44 +42,17 @@
                     android:paddingLeft="10dp"
                     android:textSize="14dp"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:gravity="center_vertical">
-
-                <Button
-                    android:id="@+id/dPretraga"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/invisible_button"
-                    android:drawableTint="@color/colorBlue2"
-                    android:drawableTop="@drawable/search_icon"
-                    android:text="@string/pretraga"
-                    android:textColor="@color/colorBlue2"
-                    android:textSize="11dp"/>
-
                 <Button
                     android:id="@+id/dDodajKategoriju"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     android:layout_weight="0.5"
                     android:textColor="@color/colorBlue2"
                     android:background="@drawable/invisible_button"
                     android:text="@string/dodajKategoriju"
                     android:drawableTop="@drawable/add_icon"
                     android:drawableTint="@color/colorBlue2"
-                    android:textSize="11dp"/>
+                    android:textSize="12dp"/>
 
             </LinearLayout>
 
@@ -97,15 +69,13 @@
                     android:id="@+id/dDodajKnjigu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     android:layout_weight="0.5"
                     android:textColor="@color/colorBlue2"
                     android:background="@drawable/invisible_button"
                     android:text="@string/dodajKnjigu"
                     android:drawableTop="@drawable/book_icon"
                     android:drawableTint="@color/colorBlue2"
-                    android:textSize="11dp"/>
+                    android:textSize="12dp"/>
 
                 <Button
                     android:id="@+id/dDodajOnline"
@@ -117,7 +87,7 @@
                     android:text="@string/dodajOnline"
                     android:drawableTop="@drawable/online_icon"
                     android:drawableTint="@color/colorBlue2"
-                    android:textSize="11dp"/>
+                    android:textSize="12dp"/>
 
             </LinearLayout>
 
@@ -134,29 +104,25 @@
                     android:id="@+id/dKategorije"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:textColor="@color/colorBlue2"
                     android:background="@drawable/invisible_button"
                     android:text="@string/kategorije"
                     android:drawableTop="@drawable/category_icon"
                     android:drawableTint="@color/colorBlue2"
-                    android:textSize="11dp"/>
+                    android:textSize="12dp"/>
 
                 <Button
                     android:id="@+id/dAutori"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:textColor="@color/colorBlue2"
                     android:background="@drawable/invisible_button"
                     android:text="@string/autori"
                     android:drawableTop="@drawable/author_icon"
                     android:drawableTint="@color/colorBlue2"
-                    android:textSize="11dp"/>
+                    android:textSize="12dp"/>
 
             </LinearLayout>
 
@@ -170,11 +136,9 @@
                     android:id="@+id/listaKategorija"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     android:backgroundTint="@color/colorBlue"
                     android:divider="@color/colorBlue2"
-                    android:dividerHeight="1dp"
+                    android:dividerHeight="1.5dp"
                     android:gravity="center" />
             </LinearLayout>
 
