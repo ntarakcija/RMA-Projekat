@@ -6,3 +6,5 @@
 **16925**
 
 Aplikacija radi samo na Marshmallow 6.0 verziji androida.
+
+Online emulator: https://appetize.io/
