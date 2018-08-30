@@ -6,6 +6,6 @@
 
 Aplikacija radi samo na Marshmallow 6.0 verziji androida.
 
-- Link za testiranje: https://appetize.io/app/fzfvxw512eqwbju5b516xkvnbm?device=nexus5&scale=75&orientation=portrait&osVersion=7.1
+- Link za testiranje: https://appetize.io/app/fzfvxw512eqwbju5b516xkvnbm?device=nexus5&scale=75&orientation=portrait&osVersion=6.0
 
 - Online emulator: https://appetize.io/
